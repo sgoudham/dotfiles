@@ -1,0 +1,5 @@
+README.md
+
+{{- if .chezmoi.os "windows" }}
+.zshrc
+{{- end }}
