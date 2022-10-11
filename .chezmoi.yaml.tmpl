@@ -10,12 +10,12 @@ diff:
   command: lvim
   args:
     - "-d"
-    - "{{ .Destination }}"
-    - "{{ .Target }}"
+    - "{{`{{ .Destination }}`}}"
+    - "{{`{{ .Target }}`}}"
 merge:
-  command: lvim
+  command: nvim
   args:
     - "-d"
-    - "{{ .Destination }}"
-    - "{{ .Source }}"
-    - "{{ .Target }}"
+    - "{{`{{ .Destination }}`}}"
+    - "{{`{{ .Source }}"
+    - "{{ .Target }}`}}"
