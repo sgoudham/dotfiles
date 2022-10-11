@@ -1,5 +1,5 @@
 README.md
 
-{{- if .chezmoi.os "windows" }}
+{{- if eq .chezmoi.os "windows" }}
 .zshrc
 {{- end }}
