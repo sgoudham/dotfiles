@@ -1,3 +1,5 @@
+# vim:ft=zsh:fenc=utf-8
+
 ### plugins via antigen {{{
 # don't pollute $HOME with antigen
 ADOTDIR="$HOME/.local/share/antigen"
@@ -93,7 +95,6 @@ export M2_HOME="$HOME/.local/bin/apache-maven-3.8.6/bin"
 export PATH="$PATH:$M2_HOME"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-# export STACK_YAML="$HOME/.stack/global-project/stack.yaml"
 export EDITOR="lvim"
 
 [ -f "/home/sgoudham/.ghcup/env" ] && source "/home/sgoudham/.ghcup/env" # ghcup-env
