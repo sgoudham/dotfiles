@@ -88,10 +88,12 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/bin/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
 export M2_HOME="$HOME/.local/bin/apache-maven-3.8.6/bin"
 export PATH="$PATH:$M2_HOME"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+# export STACK_YAML="$HOME/.stack/global-project/stack.yaml"
 export EDITOR="lvim"
 
 [ -f "/home/sgoudham/.ghcup/env" ] && source "/home/sgoudham/.ghcup/env" # ghcup-env
