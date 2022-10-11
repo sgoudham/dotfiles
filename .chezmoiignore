@@ -2,4 +2,5 @@ README.md
 
 {{- if eq .chezmoi.os "windows" }}
 .zshrc
+.config/
 {{- end }}
