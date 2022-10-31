@@ -1,0 +1,18 @@
+# This is Git's per-user configuration file.
+[user]
+	name = sgoudham
+	email = sgoudham@gmail.com
+    signingkey = 44E818FD5457EEA4
+[commit]
+	gpgsign = true
+[gpg]
+    program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager-core.exe
+[core]
+	autocrlf = input
+	editor = lvim
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main

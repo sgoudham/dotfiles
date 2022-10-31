@@ -1,0 +1,124 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# format = """
+# [┌](bold green)\\$all
+# [└ $](bold green) """
+
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[\\$](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[\\$](bold red)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+vimcmd_symbol = "[\\$](bold green)"
+
+[aws]
+style = "#74c7ec bold"
+symbol = "  "
+
+[buf]
+style = "#74c7ec bold"
+symbol = " "
+
+[c]
+style = "#74c7ec bold"
+symbol = " "
+
+[conda]
+style = "#74c7ec bold"
+symbol = " "
+
+[dart]
+style = "#74c7ec bold"
+symbol = " "
+
+[directory]
+style = "#cba6f7 bold"
+read_only = " "
+
+[docker_context]
+style = "#74c7ec bold"
+symbol = " "
+
+[elixir]
+style = "#74c7ec bold"
+symbol = " "
+
+[elm]
+style = "#74c7ec bold"
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+style = "#74c7ec bold"
+symbol = " "
+
+[haskell]
+style = "#74c7ec bold"
+symbol = " "
+
+[hg_branch]
+style = "#74c7ec bold"
+symbol = " "
+
+[java]
+style = "#74c7ec bold"
+symbol = " "
+
+[julia]
+style = "#74c7ec bold"
+symbol = " "
+
+[lua]
+style = "#74c7ec bold"
+symbol = " "
+
+[memory_usage]
+# disabled = false
+# threshold = -1
+# style = "bold dimmed green"
+style = "#74c7ec bold"
+symbol = " "
+
+[meson]
+style = "#74c7ec bold"
+symbol = "喝 "
+
+[nim]
+style = "#74c7ec bold"
+symbol = " "
+
+[nix_shell]
+style = "#74c7ec bold"
+symbol = " "
+
+[nodejs]
+style = "#74c7ec bold"
+symbol = " "
+
+[package]
+style = "#fab387 bold"
+symbol = " "
+
+[python]
+style = "#74c7ec bold"
+symbol = " "
+
+[rlang]
+style = "#74c7ec bold"
+symbol = "ﳒ "
+
+[ruby]
+style = "#74c7ec bold"
+symbol = " "
+
+[rust]
+style = "#74c7ec bold"
+symbol = " "
+
+[scala]
+style = "#74c7ec bold"
+symbol = " "
+
+[spack]
+style = "#74c7ec bold"
