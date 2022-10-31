@@ -6,6 +6,7 @@ vim.opt.pumheight = 20
 vim.opt.clipboard = ""
 vim.opt.cmdheight = 1
 vim.opt.lazyredraw = true
+vim.opt.showtabline = 0
 vim.opt.completeopt = [[menuone,noinsert,noselect]]
 
 lvim.log.level = "warn"
@@ -37,8 +38,6 @@ lvim.keys.normal_mode["<M-j>"] = "<C-w>j"
 lvim.keys.normal_mode["<M-k>"] = "<C-w>k"
 lvim.keys.normal_mode["<M-l>"] = "<C-w>l"
 lvim.keys.normal_mode["<M-h>"] = "<C-w>h"
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 
 -- telescope
 local buffer_mappings = {
@@ -66,6 +65,7 @@ lvim.keys.normal_mode["<leader>ra"] = ":lua require('user.haskell').run_haskell(
 lvim.builtin.which_key.mappings["s"] = nil
 lvim.builtin.which_key.mappings["f"] = {
   name = "Find",
+  b = { "<cmd>Telescope buffers<cr>", "Open Buffers" },
   f = { "<cmd>Telescope find_files<cr>", "Find File" },
   h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
   H = { "<cmd>Telescope highlights<cr>", "Find Highlights" },
@@ -200,6 +200,7 @@ lvim.builtin.project.active = true
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.notify.active = false
+lvim.builtin.bufferline.active = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.terminal.active = false
 lvim.builtin.indentlines.active = false
@@ -209,60 +210,60 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
-lvim.builtin.bufferline.highlights = {
-  background = {
-    italic = false,
-  },
-  buffer_selected = {
-    italic = false,
-    bold = true,
-  },
-  diagnostic_selected = {
-    italic = false
-  },
-  hint_selected = {
-    italic = false
-  },
-  hint_diagnostic_selected = {
-    italic = false
-  },
-  info_selected = {
-    italic = false
-  },
-  info_diagnostic_selected = {
-    italic = false
-  },
-  warning_selected = {
-    italic = false
-  },
-  warning_diagnostic_selected = {
-    italic = false
-  },
-  error_selected = {
-    italic = false
-  },
-  error_diagnostic_selected = {
-    italic = false
-  },
-  duplicate_selected = {
-    italic = false
-  },
-  duplicate_visible = {
-    italic = false
-  },
-  duplicate = {
-    italic = false
-  },
-  pick_selected = {
-    italic = false
-  },
-  pick_visible = {
-    italic = false
-  },
-  pick = {
-    italic = false
-  },
-}
+-- lvim.builtin.bufferline.highlights = {
+--   background = {
+--     italic = false,
+--   },
+--   buffer_selected = {
+--     italic = false,
+--     bold = true,
+--   },
+--   diagnostic_selected = {
+--     italic = false
+--   },
+--   hint_selected = {
+--     italic = false
+--   },
+--   hint_diagnostic_selected = {
+--     italic = false
+--   },
+--   info_selected = {
+--     italic = false
+--   },
+--   info_diagnostic_selected = {
+--     italic = false
+--   },
+--   warning_selected = {
+--     italic = false
+--   },
+--   warning_diagnostic_selected = {
+--     italic = false
+--   },
+--   error_selected = {
+--     italic = false
+--   },
+--   error_diagnostic_selected = {
+--     italic = false
+--   },
+--   duplicate_selected = {
+--     italic = false
+--   },
+--   duplicate_visible = {
+--     italic = false
+--   },
+--   duplicate = {
+--     italic = false
+--   },
+--   pick_selected = {
+--     italic = false
+--   },
+--   pick_visible = {
+--     italic = false
+--   },
+--   pick = {
+--     italic = false
+--   },
+-- }
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -403,6 +404,7 @@ lvim.plugins = {
         },
         integrations = {
           ts_rainbow = true,
+          bufferline = true,
           native_lsp = {
             virtual_text = {
               errors = {},
@@ -446,6 +448,8 @@ lvim.plugins = {
           TSStringEscape = { style = {} },
           ["@namespace"] = { style = {} },
           ["@parameter"] = { style = {} },
+          ["@text.uri"] = { style = {} },
+          ["@text.literal"] = { style = {} },
 
           FloatBorder = { fg = "#cdd6f4", bg = "#181825" }
         },

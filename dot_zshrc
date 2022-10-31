@@ -72,10 +72,7 @@ alias l='ls -CF'
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-eval "$(oh-my-posh --init --shell zsh --config ~/.config/M365Princess.omp.json)"
-
 . "$HOME/.cargo/env"
-. "$HOME/.config/wezterm/wezterm.sh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -86,9 +83,8 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/share/scripts"
 export PATH="$PATH:/usr/bin/go/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export M2_HOME="$HOME/.local/bin/apache-maven-3.8.6/bin"
@@ -99,7 +95,14 @@ export EDITOR="lvim"
 
 [ -f "/home/sgoudham/.ghcup/env" ] && source "/home/sgoudham/.ghcup/env" # ghcup-env
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 eval "$(zoxide init zsh)"
+eval "$(oh-my-posh --init --shell zsh --config ~/.config/M365Princess.omp.json)"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+. "$HOME/.config/wezterm/wezterm.sh"
+
