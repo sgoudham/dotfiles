@@ -1,32 +1,18 @@
 -- Vim Options
-vim.opt.laststatus = 3
 vim.opt.timeoutlen = 500
 vim.opt.relativenumber = true
+vim.opt.laststatus = 3
 vim.opt.pumheight = 20
 vim.opt.clipboard = ""
-vim.opt.cmdheight = 1
 vim.opt.lazyredraw = true
 vim.opt.showtabline = 0
 vim.opt.completeopt = [[menuone,noinsert,noselect]]
-
 lvim.log.level = "warn"
 lvim.format_on_save = false
-vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 lvim.colorscheme = "catppuccin"
-
-local lsp_diagnostics = {
-  update_in_insert = true,
-  float = {
-    border = "rounded"
-  }
-}
-lvim.lsp.diagnostics = vim.tbl_deep_extend("keep", lsp_diagnostics, lvim.lsp.diagnostics)
-
--- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 
 -- unmapping defaults
-lvim.keys.normal_mode["<C-h>"] = false
 lvim.keys.normal_mode["<C-j>"] = false
 lvim.keys.normal_mode["<C-l>"] = false
 lvim.keys.normal_mode["<C-k>"] = false
@@ -39,7 +25,24 @@ lvim.keys.normal_mode["<M-k>"] = "<C-w>k"
 lvim.keys.normal_mode["<M-l>"] = "<C-w>l"
 lvim.keys.normal_mode["<M-h>"] = "<C-w>h"
 
--- telescope
+-- cmp
+local cmp = require("cmp")
+local mappings = {
+  ['<A-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+  ['<A-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+  ['<A-p>'] = cmp.mapping.scroll_docs(-4),
+  ['<A-n>'] = cmp.mapping.scroll_docs(4),
+}
+lvim.builtin.cmp.cmdline.enable = true
+lvim.builtin.cmp.mapping = vim.tbl_deep_extend("keep", mappings, lvim.builtin.cmp.mapping)
+
+-- lsp
+local lsp_diagnostics = {
+  update_in_insert = true,
+  float = {
+    border = "rounded"
+  }
+}
 local buffer_mappings = {
   normal_mode = {
     ["ge"] = { function() require("telescope.builtin").diagnostics() end, "Display Workplace Diagnostics" },
@@ -48,18 +51,18 @@ local buffer_mappings = {
     ["gI"] = { function() require("telescope.builtin").lsp_implementations() end, "Goto Implementations" }
   }
 }
+lvim.lsp.diagnostics = vim.tbl_deep_extend("keep", lsp_diagnostics, lvim.lsp.diagnostics)
 lvim.lsp.buffer_mappings = vim.tbl_deep_extend("keep", buffer_mappings, lvim.lsp.buffer_mappings)
 
 -- useful
-lvim.keys.normal_mode["<A-p>"] = "<C-u>"
-lvim.keys.normal_mode["<A-n>"] = "<C-d>"
+lvim.keys.normal_mode["<C-u>"] = "<C-u>zz"
+lvim.keys.normal_mode["<C-d>"] = "<C-d>zz"
 lvim.keys.normal_mode["<CR>"] = "o<ESC>"
 lvim.keys.normal_mode["0"] = "^"
 lvim.keys.normal_mode["[d"] = ":lua vim.diagnostic.goto_prev()<CR>"
 lvim.keys.normal_mode["]d"] = ":lua vim.diagnostic.goto_next()<CR>"
 lvim.keys.normal_mode["[c"] = ":lua require('gitsigns').prev_hunk()<CR>"
 lvim.keys.normal_mode["]c"] = ":lua require('gitsigns').next_hunk()<CR>"
-lvim.keys.normal_mode["<leader>ra"] = ":lua require('user.haskell').run_haskell()<CR>"
 
 -- which-key
 lvim.builtin.which_key.mappings["s"] = nil
@@ -77,29 +80,9 @@ lvim.builtin.which_key.mappings["f"] = {
   r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 }
 
-local cmp = require("cmp")
-local mappings = {
-  ['<A-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-  ['<A-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-  ['<A-p>'] = cmp.mapping.scroll_docs(-4),
-  ['<A-n>'] = cmp.mapping.scroll_docs(4),
-
-}
-local cmdline = {
-  options = {
-    {
-      type = ":",
-      sources = {
-        { name = "path" },
-        { name = "cmdline" },
-      },
-    },
-  },
-}
-lvim.builtin.cmp.mapping = vim.tbl_deep_extend("keep", mappings, lvim.builtin.cmp.mapping)
-lvim.builtin.cmp.cmdline = vim.tbl_deep_extend("keep", cmdline, lvim.builtin.cmp.cmdline)
-
 local _, actions = pcall(require, "telescope.actions")
+lvim.builtin.telescope.defaults.prompt_prefix = "🔍 "
+lvim.builtin.telescope.defaults.selection_caret = "> "
 lvim.builtin.telescope.defaults.file_ignore_patterns = {
   ".git/"
 }
@@ -117,91 +100,12 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<A-p>"] = actions.preview_scrolling_up
   },
 }
-lvim.builtin.telescope.pickers = {
-  find_files = {
-    hidden = true,
-  },
-  live_grep = {
-    --@usage don't include the filename in the search results
-    only_sort_text = true,
-  },
-  grep_string = {
-    only_sort_text = true,
-  },
-  planets = {
-    show_pluto = true,
-    show_moon = true,
-  },
-  git_files = {
-    hidden = true,
-    previewer = true,
-    show_untracked = true,
-  },
-  lsp_references = {
-    initial_mode = "normal",
-  },
-  lsp_definitions = {
-    initial_mode = "normal",
-  },
-  lsp_declarations = {
-    initial_mode = "normal",
-  },
-  lsp_implementations = {
-    initial_mode = "normal",
-  },
-}
-lvim.builtin.telescope.defaults.layout_config = {
-  bottom_pane = {
-    height = 25,
-    preview_cutoff = 120,
-    prompt_position = "top"
-  },
-  center = {
-    height = 0.4,
-    preview_cutoff = 40,
-    prompt_position = "top",
-    width = 0.5
-  },
-  cursor = {
-    height = 0.9,
-    preview_cutoff = 40,
-    width = 0.8
-  },
-  horizontal = {
-    height = 0.9,
-    preview_cutoff = 120,
-    prompt_position = "bottom",
-    width = 0.8
-  },
-  vertical = {
-    height = 0.9,
-    preview_cutoff = 40,
-    prompt_position = "bottom",
-    width = 0.8
-  }
-}
 
-
--- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
--- }
-
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.project.active = true
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = false
 lvim.builtin.bufferline.active = false
-lvim.builtin.breadcrumbs.active = false
+lvim.builtin.breadcrumbs.active = true
 lvim.builtin.terminal.active = false
 lvim.builtin.indentlines.active = false
 lvim.builtin.illuminate.active = false
@@ -210,60 +114,14 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 
--- lvim.builtin.bufferline.highlights = {
---   background = {
---     italic = false,
---   },
---   buffer_selected = {
---     italic = false,
---     bold = true,
---   },
---   diagnostic_selected = {
---     italic = false
---   },
---   hint_selected = {
---     italic = false
---   },
---   hint_diagnostic_selected = {
---     italic = false
---   },
---   info_selected = {
---     italic = false
---   },
---   info_diagnostic_selected = {
---     italic = false
---   },
---   warning_selected = {
---     italic = false
---   },
---   warning_diagnostic_selected = {
---     italic = false
---   },
---   error_selected = {
---     italic = false
---   },
---   error_diagnostic_selected = {
---     italic = false
---   },
---   duplicate_selected = {
---     italic = false
---   },
---   duplicate_visible = {
---     italic = false
---   },
---   duplicate = {
---     italic = false
---   },
---   pick_selected = {
---     italic = false
---   },
---   pick_visible = {
---     italic = false
---   },
---   pick = {
---     italic = false
---   },
--- }
+lvim.builtin.alpha.dashboard.section.header.val = {
+  [[                               __                ]],
+  [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+}
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -282,19 +140,11 @@ lvim.builtin.treesitter.ensure_installed = {
   "markdown",
   "markdown_inline",
   "html",
-  "go"
+  "go",
+  "erlang"
 }
 
--- generic LSP settings
-
--- -- change UI setting of `LspInstallInfo`
--- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
--- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
--- lvim.lsp.installer.setup.ui.border = "rounded"
--- lvim.lsp.installer.setup.ui.keymaps = {
---     uninstall_server = "d",
---     toggle_server_expand = "o",
--- }
+require("lspconfig.ui.windows").default_options.border = "rounded"
 
 ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "hls" })
@@ -385,73 +235,40 @@ lvim.plugins = {
       local cp = require("catppuccin.palettes").get_palette()
 
       require("catppuccin").setup({
+        flavour = "mocha",
         compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
-        transparent_background = false,
+        transparent_background = true,
         term_colors = true,
-        styles = {
-          comments = {},
-          conditionals = {},
-          loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = {},
-        },
+        no_italic = true,
         integrations = {
           ts_rainbow = true,
-          bufferline = true,
-          native_lsp = {
-            virtual_text = {
-              errors = {},
-              hints = {},
-              warnings = {},
-              information = {}
-            }
-          }
+          which_key = true,
+          dap = {
+            enabled = true,
+            enable_ui = true,
+          },
+          navic = {
+            enabled = true,
+            custom_bg = "NONE",
+          },
+        },
+        color_overrides = {
+          mocha = {
+            base = "#000000",
+            mantle = "#000000",
+            surface2 = cp.subtext0,
+            overlay0 = cp.subtext0,
+          },
         },
         custom_highlights = {
           ErrorMsg = { fg = cp.red, style = { "bold" } },
-
-          -- Treesitter
-          TSProperty = { style = {} },
-          TSInclude = { style = {} },
-          TSOperator = { style = { "bold" } },
-          TSKeywordOperator = { style = { "bold" } },
-          TSPunctSpecial = { style = { "bold" } },
-          TSFloat = { style = { "bold" } },
-          TSNumber = { style = { "bold" } },
-          TSBoolean = { style = { "bold" } },
-          TSConditional = { style = { "bold" } },
-          TSRepeat = { style = { "bold" } },
-          TSException = { style = {} },
-          TSConstBuiltin = { style = {} },
-          TSFuncBuiltin = { style = {} },
-          TSTypeBuiltin = { style = {} },
-          TSVariableBuiltin = { style = {} },
-          TSFunction = { style = {} },
-          TSParameter = { style = {} },
-          TSKeywordFunction = { style = {} },
-          TSKeyword = { style = {} },
-          TSMethod = { style = {} },
-          TSNamespace = { style = {} },
-          TSStringRegex = { style = {} },
-          TSVariable = { style = {} },
-          TSTagAttribute = { style = {} },
-          TSURI = { style = { "underline" } },
-          TSLiteral = { style = {} },
-          TSEmphasis = { style = {} },
-          TSStringEscape = { style = {} },
-          ["@namespace"] = { style = {} },
-          ["@parameter"] = { style = {} },
-          ["@text.uri"] = { style = {} },
-          ["@text.literal"] = { style = {} },
-
-          FloatBorder = { fg = "#cdd6f4", bg = "#181825" }
+          LspInfoBorder = { link = "FloatBorder" },
+          PmenuSel = { bg = cp.surface0 },
+          FloatBorder = { fg = cp.overlay0, bg = "NONE" },
+          TelescopeBorder = { link = "FloatBorder" },
+          TelescopeMatching = { link = "TelescopeNormal" },
+          TelescopeSelection = { fg = "NONE", bg = cp.surface0 },
+          TelescopeTitle = { fg = cp.subtext0 }
         },
       })
 
