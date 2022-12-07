@@ -1,9 +1,94 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# format = """
-# [┌](bold green)\\$all
-# [└ $](bold green) """
+format = """
+${custom.top}\
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$container\
+$shell\
+${custom.bottom}\
+$character"""
+
+[custom.top]
+symbol = "┌ "
+style = "bold black"
+when = true
+
+[custom.bottom]
+symbol = "└ "
+style = "bold black"
+when = true
 
 [character] # The name of the module we are configuring is "character"
 success_symbol = "[\\$](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
@@ -74,9 +159,6 @@ style = "#74c7ec bold"
 symbol = " "
 
 [memory_usage]
-# disabled = false
-# threshold = -1
-# style = "bold dimmed green"
 style = "#74c7ec bold"
 symbol = " "
 
