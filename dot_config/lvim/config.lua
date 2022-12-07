@@ -78,6 +78,7 @@ lvim.builtin.which_key.mappings["f"] = {
   c = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find Text In Current Buffer" },
   C = { "<cmd>Telescope commands<cr>", "Find Commands" },
   r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  p = { "<cmd>Telescope projects<cr>", "Open Projects" },
 }
 
 local _, actions = pcall(require, "telescope.actions")
@@ -141,7 +142,8 @@ lvim.builtin.treesitter.ensure_installed = {
   "markdown_inline",
   "html",
   "go",
-  "erlang"
+  "erlang",
+  "toml"
 }
 
 require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -208,6 +210,7 @@ require("lvim.lsp.manager").setup("hls", opts)
 
 -- Additional Plugins
 lvim.plugins = {
+  { "andweeb/presence.nvim" },
   { "hrsh7th/cmp-cmdline" },
   { "gpanders/editorconfig.nvim" },
   { "p00f/nvim-ts-rainbow" },
