@@ -1,7 +1,9 @@
 # vim:ft=zsh:fenc=utf-8
 
-### plugins via antigen {{{
-# don't pollute $HOME with antigen
+# Prompt
+eval "$(starship init zsh)"
+
+# Plugins - Antigen 
 ADOTDIR="$HOME/.local/share/antigen"
 if [[ ! -d "$ADOTDIR" ]]; then
   mkdir -p "$ADOTDIR"
@@ -9,7 +11,7 @@ if [[ ! -d "$ADOTDIR" ]]; then
   chmod +x "$ADOTDIR"
 fi
 
-# load antigen
+# Load Antigen
 source "$ADOTDIR/antigen.zsh"
 antigen use oh-my-zsh
 antigen bundle colored-man-pages
@@ -23,86 +25,64 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+# Make 'less' friendlier for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Forcing 256 bit colour
+export TERM=xterm-256color
+
+# Keep History
 export HISTFILE="$HOME/.zhistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+# Coloured GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# Forcing 256 bit colour
-TERM=xterm-256color
-
-# enable color support of ls and also add handy aliases
+# Color support of 'ls' and also add aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
-# Coloured GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# Display images in the terminal
+function icat() {
+  if [ "$TERM_PROGRAM" = "WezTerm" ]; then
+    wezterm imgcat "$@"
+  elif [ "$TERM" = "xterm-kitty" ]; then
+    kitty +kitten icat "$@"
+  else
+    echo 'No image viewer defined for this terminal'
+  fi
+}
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# export PATH="$PATH:$HOME/.local/share/scripts"
+# export M2_HOME="$HOME/.local/bin/apache-maven-3.8.6/bin"
+# export PATH="$PATH:$M2_HOME"
+# export DENO_INSTALL="$HOME/.deno"
+# export PATH="$DENO_INSTALL/bin:$PATH"
 
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# PATH
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/scripts"
 
+# Rust
 . "$HOME/.cargo/env"
 
+# Go
+export PATH="$PATH:$HOME/.local/share/go/bin"
+
+# Haskell (ghcup-env)
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+
+# Node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/share/scripts"
-export PATH="$PATH:/usr/bin/go/bin"
-export PATH="$PATH:/usr/local/go/bin"
-export M2_HOME="$HOME/.local/bin/apache-maven-3.8.6/bin"
-export PATH="$PATH:$M2_HOME"
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-export EDITOR="lvim"
-
-[ -f "/home/sgoudham/.ghcup/env" ] && source "/home/sgoudham/.ghcup/env" # ghcup-env
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-eval "$(zoxide init zsh)"
-eval "$(oh-my-posh --init --shell zsh --config ~/.config/M365Princess.omp.json)"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-. "$HOME/.config/wezterm/wezterm.sh"
-
+# . "$HOME/.config/wezterm/wezterm.sh"

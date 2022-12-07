@@ -1,0 +1,3 @@
+# Editing
+export EDITOR="lvim"
+export SUDO_EDITOR=$(which lvim)
