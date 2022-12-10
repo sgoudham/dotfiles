@@ -3,9 +3,6 @@
 # Prompt
 eval "$(starship init zsh)"
 
-# WezTerm Shell Integration
-# . "$HOME/.config/wezterm/wezterm.sh"
-
 # Plugins - Antigen 
 ADOTDIR="$HOME/.local/share/antigen"
 if [[ ! -d "$ADOTDIR" ]]; then
@@ -49,8 +46,6 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
 
 # Display images in the terminal
@@ -64,11 +59,8 @@ function icat() {
   fi
 }
 
-# export PATH="$PATH:$HOME/.local/share/scripts"
 # export M2_HOME="$HOME/.local/bin/apache-maven-3.8.6/bin"
 # export PATH="$PATH:$M2_HOME"
-# export DENO_INSTALL="$HOME/.deno"
-# export PATH="$DENO_INSTALL/bin:$PATH"
 
 # PATH
 export PATH="$PATH:$HOME/.local/bin"
@@ -87,3 +79,7 @@ export PATH="$PATH:$HOME/.local/share/go/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
