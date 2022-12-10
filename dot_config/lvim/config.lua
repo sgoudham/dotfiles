@@ -79,6 +79,7 @@ lvim.builtin.which_key.mappings["f"] = {
   C = { "<cmd>Telescope commands<cr>", "Find Commands" },
   r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   p = { "<cmd>Telescope projects<cr>", "Open Projects" },
+  d = { "<cmd>Easypick chezmoi<cr>", "Open Dotfiles" },
 }
 
 local _, actions = pcall(require, "telescope.actions")
@@ -215,6 +216,21 @@ lvim.plugins = {
   { "gpanders/editorconfig.nvim" },
   { "p00f/nvim-ts-rainbow" },
   { "nvim-treesitter/playground" },
+  {
+    "axkirillov/easypick.nvim",
+    config = function()
+      local easypick = require("easypick")
+      easypick.setup {
+        pickers = {
+          {
+            name = "chezmoi",
+            command = [[chezmoi managed -x encrypted -i files | awk '{ printf("%s/%s\n", "~", $0) }']],
+            opts = require('telescope.themes').get_dropdown({})
+          },
+        },
+      }
+    end
+  },
   {
     'stevearc/dressing.nvim',
     config = function()
