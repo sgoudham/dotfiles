@@ -66,11 +66,14 @@ function icat() {
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/scripts"
 
-# Rust
-. "$HOME/.cargo/env"
+# JetBrains Toolbox
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 # Go
 export PATH="$PATH:$HOME/.local/share/go/bin"
+
+# Rust
+source "$HOME/.cargo/env"
 
 # Haskell (ghcup-env)
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
@@ -83,3 +86,7 @@ export NVM_DIR="$HOME/.nvm"
 # Deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
