@@ -1,3 +1,12 @@
+# WezTerm By Default
+export TERMINAL=wezterm-gui
+
 # Editing
 export EDITOR="lvim"
 export SUDO_EDITOR=$(which lvim)
+
+# Go
+export GOPATH="$HOME/.local/share/go"
+
+# Java
+export JAVA_HOME="$SDKMAN_DIR/candidates/java/current"
