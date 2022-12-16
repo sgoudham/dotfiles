@@ -34,25 +34,38 @@ local mappings = {
   ['<A-n>'] = cmp.mapping.scroll_docs(4),
 }
 lvim.builtin.cmp.cmdline.enable = true
-lvim.builtin.cmp.mapping = vim.tbl_deep_extend("keep", mappings, lvim.builtin.cmp.mapping)
+lvim.builtin.cmp.mapping = vim.tbl_deep_extend("keep", mappings,
+                                               lvim.builtin.cmp.mapping)
 
 -- lsp
 local lsp_diagnostics = {
   update_in_insert = true,
-  float = {
-    border = "rounded"
-  }
+  float = { border = "rounded" },
 }
 local buffer_mappings = {
   normal_mode = {
-    ["ge"] = { function() require("telescope.builtin").diagnostics() end, "Display Workplace Diagnostics" },
-    ["gr"] = { function() require("telescope.builtin").lsp_references() end, "Goto References" },
-    ["gd"] = { function() require("telescope.builtin").lsp_definitions() end, "Goto Definitions" },
-    ["gI"] = { function() require("telescope.builtin").lsp_implementations() end, "Goto Implementations" }
-  }
+    ["ge"] = {
+      function() require("telescope.builtin").diagnostics() end,
+      "Display Workplace Diagnostics",
+    },
+    ["gr"] = {
+      function() require("telescope.builtin").lsp_references() end,
+      "Goto References",
+    },
+    ["gd"] = {
+      function() require("telescope.builtin").lsp_definitions() end,
+      "Goto Definitions",
+    },
+    ["gI"] = {
+      function() require("telescope.builtin").lsp_implementations() end,
+      "Goto Implementations",
+    },
+  },
 }
-lvim.lsp.diagnostics = vim.tbl_deep_extend("keep", lsp_diagnostics, lvim.lsp.diagnostics)
-lvim.lsp.buffer_mappings = vim.tbl_deep_extend("keep", buffer_mappings, lvim.lsp.buffer_mappings)
+lvim.lsp.diagnostics = vim.tbl_deep_extend("keep", lsp_diagnostics,
+                                           lvim.lsp.diagnostics)
+lvim.lsp.buffer_mappings = vim.tbl_deep_extend("keep", buffer_mappings,
+                                               lvim.lsp.buffer_mappings)
 
 -- useful
 lvim.keys.normal_mode["<C-u>"] = "<C-u>zz"
@@ -75,7 +88,10 @@ lvim.builtin.which_key.mappings["f"] = {
   g = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   R = { "<cmd>Telescope registers<cr>", "Find Registers" },
   k = { "<cmd>Telescope keymaps<cr>", "Find Keymaps" },
-  c = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find Text In Current Buffer" },
+  c = {
+    "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+    "Find Text In Current Buffer",
+  },
   C = { "<cmd>Telescope commands<cr>", "Find Commands" },
   r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   p = { "<cmd>Telescope projects<cr>", "Open Projects" },
@@ -85,9 +101,7 @@ lvim.builtin.which_key.mappings["f"] = {
 local _, actions = pcall(require, "telescope.actions")
 lvim.builtin.telescope.defaults.prompt_prefix = "🔍 "
 lvim.builtin.telescope.defaults.selection_caret = "> "
-lvim.builtin.telescope.defaults.file_ignore_patterns = {
-  ".git/"
-}
+lvim.builtin.telescope.defaults.file_ignore_patterns = { ".git/" }
 lvim.builtin.telescope.defaults.mappings = {
   i = {
     ["<A-j>"] = actions.move_selection_next,
@@ -99,7 +113,7 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<A-j>"] = actions.move_selection_next,
     ["<A-k>"] = actions.move_selection_previous,
     ["<A-n>"] = actions.preview_scrolling_down,
-    ["<A-p>"] = actions.preview_scrolling_up
+    ["<A-p>"] = actions.preview_scrolling_up,
   },
 }
 
@@ -144,19 +158,14 @@ lvim.builtin.treesitter.ensure_installed = {
   "html",
   "go",
   "erlang",
-  "toml"
+  "toml",
 }
-
-require("lspconfig.ui.windows").default_options.border = "rounded"
 
 ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "hls" })
-local opts = {
-  cmd = {
-    "haskell-language-server-9.2.4", "--lsp"
-  }
-} -- check the lspconfig documentation for a list of all possible options
+local opts = { cmd = { "haskell-language-server-9.2.4", "--lsp" } } -- check the lspconfig documentation for a list of all possible options
 require("lvim.lsp.manager").setup("hls", opts)
+require("lspconfig.ui.windows").default_options.border = "rounded"
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -175,21 +184,21 @@ require("lvim.lsp.manager").setup("hls", opts)
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- -- set a formatter, this will override the language server formatting capabilities (if it exists)
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "black", filetypes = { "python" } },
---   { command = "isort", filetypes = { "python" } },
---   {
---     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "prettier",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--print-with", "100" },
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  {
+    command = "lua-format",
+    filetypes = { "lua" },
+    extra_args = {
+      "--spaces-inside-table-braces",
+      "--indent-width=2",
+      "--tab-width=2",
+      "--continuation-indent-width=2",
+      "--chop-down-table",
+      "--extra-sep-at-table-end",
+    },
+  },
+}
 
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
@@ -225,31 +234,26 @@ lvim.plugins = {
           {
             name = "chezmoi",
             command = [[chezmoi managed -x encrypted -i files | awk '{ printf("%s/%s\n", "~", $0) }']],
-            opts = require('telescope.themes').get_dropdown({})
+            opts = require('telescope.themes').get_dropdown({}),
           },
         },
       }
-    end
+    end,
   },
   {
     'stevearc/dressing.nvim',
     config = function()
-      require("dressing").setup {
-        input = {
-          insert_only = false
-        }
-      }
-    end
+      require("dressing").setup { input = { insert_only = false } }
+    end,
   },
   {
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-      require("nvim-surround").setup()
-    end
+    config = function() require("nvim-surround").setup() end,
   },
   {
-    "catppuccin/nvim", as = "catppuccin",
+    "catppuccin/nvim",
+    as = "catppuccin",
     config = function()
       local cp = require("catppuccin.palettes").get_palette()
 
@@ -262,14 +266,8 @@ lvim.plugins = {
         integrations = {
           ts_rainbow = true,
           which_key = true,
-          dap = {
-            enabled = true,
-            enable_ui = true,
-          },
-          navic = {
-            enabled = true,
-            custom_bg = "NONE",
-          },
+          dap = { enabled = true, enable_ui = true },
+          navic = { enabled = true, custom_bg = "NONE" },
         },
         color_overrides = {
           mocha = {
@@ -287,15 +285,14 @@ lvim.plugins = {
           TelescopeBorder = { link = "FloatBorder" },
           TelescopeMatching = { link = "TelescopeNormal" },
           TelescopeSelection = { fg = "NONE", bg = cp.surface0 },
-          TelescopeTitle = { fg = cp.subtext0 }
+          TelescopeTitle = { fg = cp.subtext0 },
         },
       })
 
       vim.api.nvim_command "colorscheme catppuccin"
-    end
-  }
+    end,
+  },
 }
-
 
 -- SOME PROPER CUSTOM CONFIGURATION --
 
