@@ -1,1 +1,1 @@
-require("hammy")
+reload("hammy")

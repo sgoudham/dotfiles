@@ -1,5 +1,5 @@
-require("hammy.lsp.haskell")
-require("hammy.lsp.rust")
+reload("hammy.lsp.haskell")
+reload("hammy.lsp.rust")
 
 require("lspconfig.ui.windows").default_options.border = "rounded"
 

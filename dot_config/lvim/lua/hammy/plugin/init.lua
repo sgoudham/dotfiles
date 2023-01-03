@@ -1,8 +1,8 @@
-require("hammy.plugin.cmp")
-require("hammy.plugin.treesitter")
-require("hammy.plugin.telescope")
-require("hammy.plugin.dashboard")
-require("hammy.plugin.nvimtree")
+reload("hammy.plugin.cmp")
+reload("hammy.plugin.treesitter")
+reload("hammy.plugin.telescope")
+reload("hammy.plugin.dashboard")
+reload("hammy.plugin.nvimtree")
 
 -- Enable/Disable Lvim Plugins
 lvim.builtin.project.active = true

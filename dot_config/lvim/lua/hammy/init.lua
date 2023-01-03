@@ -1,10 +1,10 @@
-require("hammy.set")
-require("hammy.remap")
-require("hammy.formatter")
--- require("hammy.linter")
-require("hammy.packer")
-require("hammy.lsp")
-require("hammy.plugin")
+reload("hammy.set")
+reload("hammy.remap")
+reload("hammy.formatter")
+-- reload("hammy.linter")
+reload("hammy.packer")
+reload("hammy.lsp")
+reload("hammy.plugin")
 
 -- Some "Proper" Custom Configuration --
 vim.api.nvim_create_autocmd("BufWritePost", {
