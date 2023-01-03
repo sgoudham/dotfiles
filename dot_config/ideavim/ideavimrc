@@ -1,1 +1,118 @@
 " vim:ft=vim:fenc=utf-8:fdm=marker
+
+"" Difference between all the different maps:
+""   https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
+"" Ideavim actionlist:
+""   https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
+"" List of supported plugins:
+""   https://github.com/JetBrains/ideavim/wiki/Emulated-plugins
+""   https://betterprogramming.pub/the-essential-ideavim-plugins-f939b4325180
+
+let mapleader = " "
+
+"" Emulated plugins
+" use 'c|d|yia' to c|d|y inner arguments
+set argtextobj
+set commentary
+set highlightedyank
+set NERDTree
+set surround
+set textobj-entire
+set which-key
+
+"" Options
+set notimeout
+set smartcase
+set incsearch
+set relativenumber
+set number
+set ideajoin
+set showcmd
+set showmode
+" Stay in the mode in which the editing started
+set idearefactormode=keep
+
+" No annoying sound on errors
+set visualbell
+set tm=500
+
+"" Mappings
+" 0 -> first non-blank character
+map 0 ^
+
+" Center buffer when navigating
+" nmap <C-u> <C-u>zz
+" nmap <C-d> <C-d>zz
+nmap n nzzzv
+nmap N Nzzzv
+
+" Workaround for unifying navigation history:
+" https://youtrack.jetbrains.com/issue/VIM-44/Unify-navigation-history-between-ideavim-and-idea"
+nmap <C-o> <Action>(Back)
+nmap <C-i> <Action>(Forward)
+
+" Navigate project errors
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+
+" Navigate git changes
+map [c <Action>(VcsShowPrevChangeMarker)
+map ]c <Action>(VcsShowNextChangeMarker)
+
+" Show hoverdoc
+map H <Action>(ShowErrorDescription)
+
+" Shortcutting split navigation
+map <a-h> <C-w>h
+map <a-j> <C-w>j
+map <a-k> <C-w>k
+map <a-l> <C-w>l
+
+" Bye bye
+map <leader>q <Action>(CloseContent)
+map <leader>Q <Action>(CloseAllEditors)
+map <leader>h <Action>(HideAllWindows)
+
+" Focus project window
+map <leader>e :NERDTreeToggle<CR>
+
+" File navigation
+map <leader>ff <Action>(GotoFile)
+map <leader>fC <Action>(SearchEverywhere)
+map <leader>fg <Action>(FindInPath)
+map <leader>fr <Action>(RecentLocations)
+
+" Keep visual selection
+vnoremap < <gv
+vnoremap > >gv
+
+" LSP stuffs
+map <leader>lo <Action>(OptimizeImports)
+map <leader>lf <Action>(ReformatCode)
+map <leader>lr <Action>(RenameElement)
+map <leader>la <Action>(ShowIntentionActions)
+map gt <Action>(GotoTest)
+map gs <Action>(GotoSuperMethod)
+
+" Debugging stuffs
+map <leader>dt <Action>(ToggleLineBreakpoint)
+map <leader>ds <Action>(ContextDebug)
+map <leader>rs <Action>(ContextRun)
+map <leader>rc <Action>(RunClass)
+map <leader>rf <Action>(ChooseRunConfiguration)
+
+" Hello terminal :D
+map <leader>t <Action>(ActivateTerminalToolWindow)
+
+" Open ideavimrc
+map <leader>; :e ~/.config/ideavim/ideavimrc<CR>
+
+" Alt+j/k for autocompletion popup
+inoremap <A-j> <C-n>
+inoremap <A-k> <C-p>
+
+" Zen mode
+map <leader>zz <Action>(ToggleZenMode)
+
+" Vim search is simply outclassed here
+map / <Action>(Find)
