@@ -1,6 +1,6 @@
 [user]
-  name = sgoudham
-  email = sgoudham@gmail.com
+	name = sgoudham
+	email = sgoudham@gmail.com
   signingkey = 44E818FD5457EEA4
 [commit]
   gpgsign = true
