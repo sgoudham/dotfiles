@@ -8,6 +8,34 @@
 ""   https://github.com/JetBrains/ideavim/wiki/Emulated-plugins
 ""   https://betterprogramming.pub/the-essential-ideavim-plugins-f939b4325180
 
+"" Good Keyboard Shortcut Rebinds:
+""  <Up> -> <A-k>
+""  <Down> -> <A-j>
+""  <Alt+Insert> -> <A+n>
+""  ---
+""  Manage Projects -> <A-p>
+""  ActivateTerminalToolWindow -> <A-t>
+""  Hide Active Window -> Alt + Shift + h
+""  ---
+""  UNBIND default <C-n>
+
+"" Set Handlers
+sethandler <S-Tab> a:vim
+sethandler <C-A> a:ide
+sethandler <C-C> a:ide
+sethandler <C-D> a:vim
+sethandler <C-H> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:vim
+sethandler <A-J> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-Q> a:vim
+sethandler <C-T> a:vim
+sethandler <C-U> a:vim
+sethandler <C-V> a:ide
+
 let mapleader = " "
 
 "" Emulated plugins
@@ -59,6 +87,10 @@ map ]d <Action>(GotoNextError)
 map [c <Action>(VcsShowPrevChangeMarker)
 map ]c <Action>(VcsShowNextChangeMarker)
 
+" Navigate methods
+map [m <Action>(MethodUp)
+map ]m <Action>(MethodDown)
+
 " Show hoverdoc
 map H <Action>(ShowErrorDescription)
 
@@ -100,7 +132,9 @@ map gs <Action>(GotoSuperMethod)
 
 " Debugging stuffs
 map <leader>dt <Action>(ToggleLineBreakpoint)
+map <leader>db <Action>(ViewBreakpoints)
 map <leader>ds <Action>(ContextDebug)
+map <leader>df <Action>(ChooseDebugConfiguration)
 map <leader>rs <Action>(ContextRun)
 map <leader>rc <Action>(RunClass)
 map <leader>rf <Action>(ChooseRunConfiguration)
