@@ -4,6 +4,7 @@ lvim.plugins = {
   { "gpanders/editorconfig.nvim" },
   { "p00f/nvim-ts-rainbow" },
   { "nvim-treesitter/playground" },
+  { "nvim-treesitter/nvim-treesitter-textobjects"},
   { "simrat39/rust-tools.nvim" },
   {
     "saecki/crates.nvim",
