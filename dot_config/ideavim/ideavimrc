@@ -41,8 +41,8 @@ set tm=500
 map 0 ^
 
 " Center buffer when navigating
-" nmap <C-u> <C-u>zz
-" nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
+nmap <C-d> <C-d>zz
 nmap n nzzzv
 nmap N Nzzzv
 
@@ -74,13 +74,17 @@ map <leader>Q <Action>(CloseAllEditors)
 map <leader>h <Action>(HideAllWindows)
 
 " Focus project window
-map <leader>e :NERDTreeToggle<CR>
+map <leader>e :NERDTreeFocus<CR>
 
 " File navigation
 map <leader>ff <Action>(GotoFile)
 map <leader>fC <Action>(SearchEverywhere)
 map <leader>fg <Action>(FindInPath)
-map <leader>fr <Action>(RecentLocations)
+map <leader>fr <Action>(RecentFiles)
+
+" Tab navigation
+map <Tab> <Action>(NextTab)
+map <S-Tab> <Action>(PreviousTab)
 
 " Keep visual selection
 vnoremap < <gv
@@ -112,7 +116,7 @@ inoremap <A-j> <C-n>
 inoremap <A-k> <C-p>
 
 " Zen mode
-map <leader>zz <Action>(ToggleZenMode)
+map <leader>zz <Action>(TogglePresentationMode)
 
 " Vim search is simply outclassed here
 map / <Action>(Find)
