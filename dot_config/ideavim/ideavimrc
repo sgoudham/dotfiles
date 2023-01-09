@@ -39,14 +39,21 @@ sethandler <C-V> a:ide
 let mapleader = " "
 
 "" Emulated plugins
+
 " use 'c|d|yia' to c|d|y inner arguments
 set argtextobj
+let g:argtextobj_pairs="(:),{:},<:>,[:]"
 set commentary
 set highlightedyank
 set NERDTree
 set surround
 set textobj-entire
 set which-key
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_primary_color = '#e64553'
+let g:qs_secondary_color = '#fe640b'
+let g:qs_accepted_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '{', '}', '[', ']', '<', '>']
 
 "" Options
 set notimeout
@@ -63,6 +70,9 @@ set idearefactormode=keep
 " No annoying sound on errors
 set visualbell
 set tm=500
+
+" Set scrolloff
+set scrolloff=8
 
 "" Mappings
 " 0 -> first non-blank character
@@ -113,6 +123,7 @@ map <leader>ff <Action>(GotoFile)
 map <leader>fC <Action>(SearchEverywhere)
 map <leader>fg <Action>(FindInPath)
 map <leader>fr <Action>(RecentFiles)
+map <leader>fp <Action>(ManageRecentProjects)
 
 " Tab navigation
 map <Tab> <Action>(NextTab)
@@ -129,6 +140,7 @@ map <leader>lr <Action>(RenameElement)
 map <leader>la <Action>(ShowIntentionActions)
 map gt <Action>(GotoTest)
 map gs <Action>(GotoSuperMethod)
+map gI <Action>(GotoImplementation)
 
 " Debugging stuffs
 map <leader>dt <Action>(ToggleLineBreakpoint)
@@ -138,6 +150,9 @@ map <leader>df <Action>(ChooseDebugConfiguration)
 map <leader>rs <Action>(ContextRun)
 map <leader>rc <Action>(RunClass)
 map <leader>rf <Action>(ChooseRunConfiguration)
+
+" Git stuffs
+map <leader>g <Action>(ActivateCommitToolWindow)
 
 " Hello terminal :D
 map <leader>t <Action>(ActivateTerminalToolWindow)
