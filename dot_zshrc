@@ -107,30 +107,10 @@ function icat() {
 # export M2_HOME="$HOME/.local/bin/apache-maven-3.8.6/bin"
 # export PATH="$PATH:$M2_HOME"
 
-# PATH
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/scripts"
-
-# JetBrains Toolbox
-export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
-
-# Go
-export PATH="$PATH:$HOME/.local/share/go/bin"
-
-# Rust
-source "$HOME/.cargo/env"
-
-# Haskell (ghcup-env)
-[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
-
 # Node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Deno
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
