@@ -141,6 +141,7 @@ map <leader>la <Action>(ShowIntentionActions)
 map gt <Action>(GotoTest)
 map gs <Action>(GotoSuperMethod)
 map gI <Action>(GotoImplementation)
+map gx <Action>(OpenInBrowserGroup)
 
 " Debugging stuffs
 map <leader>dt <Action>(ToggleLineBreakpoint)
