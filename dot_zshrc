@@ -28,6 +28,9 @@ antigen apply
 # Make 'less' friendlier for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Aliases
+alias clipboard='xclip -sel clip'
+
 # Forcing 256 bit colour
 export TERM=xterm-256color
 
