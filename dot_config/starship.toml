@@ -2,7 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-${custom.top}\
+┌ \
 $username\
 $hostname\
 $localip\
@@ -72,24 +72,23 @@ $sudo\
 $cmd_duration\
 $line_break\
 $jobs\
-$battery\
 $time\
 $status\
 $container\
 $shell\
-${custom.bottom}\
+└ \
 $character"""
 
-[custom.top]
-symbol = "┌ "
-style = "bold black"
-when = true
-
-[custom.bottom]
-symbol = "└ "
-style = "bold black"
-when = true
-
+# [custom.top]
+# symbol = "┌ "
+# style = "bold black"
+# when = true
+#
+# [custom.bottom]
+# symbol = "└ "
+# style = "bold black"
+# when = true
+#
 [character] # The name of the module we are configuring is "character"
 success_symbol = "[\\$](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
 error_symbol = "[\\$](bold red)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
