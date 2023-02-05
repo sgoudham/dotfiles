@@ -7,7 +7,7 @@ return {
                 window = {
                     border = "rounded",
                 },
-            })
+           })
 
             wk.register({
                 g = { name = "Go to" },
@@ -16,15 +16,13 @@ return {
             })
 
             wk.register({
-                c = { name = "Code" },
                 f = { name = "Find" },
                 g = { name = "Git" },
-                j = { name = "Jump" },
+                -- j = { name = "Jump" },
                 l = { name = "LSP" },
-                o = { name = "Open" },
-                s = { name = "Search" },
+                -- o = { name = "Open" },
                 t = { name = "Tasks" },
-                x = { name = "Debug" },
+                d = { name = "Debug" },
             }, { prefix = "<leader>" })
         end,
     },

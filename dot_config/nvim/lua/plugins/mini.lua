@@ -5,6 +5,10 @@ return {
             -- add gc/gcc actions, gc textobject
             require("mini.comment").setup({})
 
+            -- autochange dir
+            -- require("mini.misc").setup({})
+            -- MiniMisc.setup_auto_root()
+
             -- highlight word under cursor
             require("mini.cursorword").setup({ delay = 0 })
 
@@ -14,5 +18,5 @@ return {
                 symbol = "│",
             })
         end,
-    }
+    },
 }

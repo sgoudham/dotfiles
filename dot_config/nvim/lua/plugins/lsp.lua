@@ -32,18 +32,17 @@ local default_config = {
         map("K", vim.lsp.buf.hover, "Hover")
         map("]d", vim.diagnostic.goto_next, "Next diagnostic")
         map("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-        -- add git signs later
 
         map("<leader>la", vim.lsp.buf.code_action, "Code Action")
         map("<leader>lr", vim.lsp.buf.rename, "Rename")
         map("<leader>lf", vim.lsp.buf.format, "Format")
+        map("<leader>li", "<cmd>LspInfo<cr>", "LSP Info")
+        map("<leader>lI", "<cmd>Mason<cr>", "Mason Info")
         map("<leader>lw", function()
             require("telescope.builtin").diagnostics()
         end, "LSP Workplace Diagnostics")
         map("<leader>ld", function()
-            require("telescope.builtin").diagnostics({
-                bufnr = 0,
-            })
+            require("telescope.builtin").diagnostics({ bufnr = 0 })
         end, "LSP Buffer Diagnostics")
         map("<leader>ls", function()
             require("telescope.builtin").lsp_document_symbols()
@@ -114,8 +113,8 @@ return {
                                         local opts = vim.tbl_extend("keep", def_opts, { buffer = bufnr })
                                         -- haskell-language-server relies heavily on codeLenses,
                                         -- so auto-refresh (see advanced configuration) is enabled by default
-                                        vim.keymap.set("n", "<space>ca", vim.lsp.codelens.run, opts)
-                                        vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, opts)
+                                        -- vim.keymap.set("n", "<space>ca", vim.lsp.codelens.run, opts)
+                                        -- vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, opts)
                                     end,
                                 },
                             })

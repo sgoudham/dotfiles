@@ -50,6 +50,7 @@ return {
                     TelescopeTitle = { fg = cp.subtext0 },
                     QuickScopePrimary = { fg = cp.maroon },
                     QuickScopeSecondary = { fg = cp.peach },
+                    -- MiniIndentscopeSymbol = { fg = cp.blue },
                 },
             })
             vim.cmd.colorscheme("catppuccin")
