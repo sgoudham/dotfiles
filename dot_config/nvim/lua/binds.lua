@@ -1,11 +1,17 @@
 local wk = require("which-key")
 
+-- what a workaround (screw you @nekowinston :sob:)
+-- https://github.com/wez/wezterm/discussions/2426
+-- https://github.com/neovim/neovim/issues/2252
 wk.register({
-    ["0"] = { "0^", "" }
-})
+    ["<A-N>"] = { "<cmd>lua io.popen('wezterm cli split-pane --right --cwd .')<cr>", "All my homies hate OSC 7" },
+    ["<A-M>"] = { "<cmd>lua io.popen('wezterm cli split-pane --bottom --cwd .')<cr>", "All my homies hate OSC 7" },
+}, { mode = { "n", "i", "v", "t" } })
 
 -- normal binds
 wk.register({
+    ["0"] = { "0^", "Start of Line" },
+    ["<CR>"] = { "o<ESC>", "New Line Without Insert" },
     ["<C-s>"] = { "<cmd>write<cr>", "Save" },
     ["<C-d>"] = { "<C-d>zz", "Half page down" },
     ["<C-u>"] = { "<C-u>zz", "Half page up" },
