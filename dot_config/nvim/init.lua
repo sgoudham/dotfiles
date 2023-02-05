@@ -59,3 +59,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         client.server_capabilities.semanticTokensProvider = nil
     end,
 })
+
+-- Stop comments on new lines when pressing 'o'
+vim.api.nvim_create_augroup("stop_comments_on_o", {})
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = "stop_comments_on_o",
+    callback = function(_)
+        vim.opt.formatoptions:remove("o")
+    end,
+})
