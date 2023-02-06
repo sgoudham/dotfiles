@@ -1,3 +1,3 @@
 return {
-    { "cloudysake/asciitree.nvim", cmd = "AsciiTree" },
+  { "cloudysake/asciitree.nvim", cmd = "AsciiTree" },
 }

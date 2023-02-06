@@ -1,8 +1,8 @@
 return {
-    {
-        "williamboman/mason.nvim",
-        config = {
-            ui = { border = "rounded" },
-        },
+  {
+    "williamboman/mason.nvim",
+    config = {
+      ui = { border = "rounded" },
     },
+  },
 }
