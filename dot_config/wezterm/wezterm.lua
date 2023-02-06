@@ -143,7 +143,7 @@ return {
     background = {
         {
             source = { File = "Pictures/astronaut.png" },
-            hsb = { brightness = 0.15, hue = 1.0, saturation = 0.1 },
+            hsb = { brightness = 0.07, hue = 1.0, saturation = 0.1 },
         },
     },
 
