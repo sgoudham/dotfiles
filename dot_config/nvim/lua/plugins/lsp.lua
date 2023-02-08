@@ -1,3 +1,5 @@
+local lsp = require("lsp")
+
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -11,58 +13,8 @@ vim.diagnostic.config({
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-local default_config = {
-  on_attach = function(client, bufnr)
-    require("lsp-format").on_attach(client)
-
-    -- add lsp-only keybinds
-    local map = function(sequence, cmd, desc)
-      vim.keymap.set("n", sequence, cmd, { buffer = bufnr, desc = desc })
-    end
-
-    map("K", vim.lsp.buf.hover, "Hover")
-    map("]d", vim.diagnostic.goto_next, "Next diagnostic")
-    map("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-
-    map("gs", vim.lsp.buf.signature_help, "LSP Signature Help")
-    map("gD", vim.lsp.buf.declaration, "LSP Declarations")
-    map("gd", function()
-      require("telescope.builtin").lsp_definitions()
-    end, "LSP Definitions")
-    map("gr", function()
-      require("telescope.builtin").lsp_references()
-    end, "LSP References")
-    map("gI", function()
-      require("telescope.builtin").lsp_implementations()
-    end, "LSP Implementations")
-    map("gl", function()
-      vim.diagnostic.open_float(0, {
-        scope = "line",
-      })
-    end)
-
-    map("<leader>la", vim.lsp.buf.code_action, "Code Action")
-    map("<leader>lr", vim.lsp.buf.rename, "Rename")
-    map("<leader>lf", vim.lsp.buf.format, "Format")
-    map("<leader>li", "<cmd>LspInfo<cr>", "LSP Info")
-    map("<leader>lI", "<cmd>Mason<cr>", "Mason Info")
-    map("<leader>lw", function()
-      require("telescope.builtin").diagnostics()
-    end, "LSP Workplace Diagnostics")
-    map("<leader>ld", function()
-      require("telescope.builtin").diagnostics({ bufnr = 0 })
-    end, "LSP Buffer Diagnostics")
-    map("<leader>ls", function()
-      require("telescope.builtin").lsp_document_symbols()
-    end, "LSP Document Symbols")
-    map("<leader>lS", function()
-      require("telescope.builtin").lsp_workspace_symbols()
-    end, "LSP Workplace Symbols")
-  end,
-}
-
 local custom_config = function(config)
-  local merged_config = vim.deepcopy(default_config)
+  local merged_config = vim.deepcopy(lsp.default_config)
   merged_config = vim.tbl_extend("force", merged_config, config)
   return merged_config
 end
@@ -83,7 +35,7 @@ return {
           require("mason-lspconfig").setup_handlers({
             -- default handler
             function(server_name)
-              require("lspconfig")[server_name].setup(default_config)
+              require("lspconfig")[server_name].setup(lsp.default_config)
             end,
             ["rust_analyzer"] = function()
               -- https://github.com/simrat39/rust-tools.nvim/issues/300
@@ -110,7 +62,7 @@ return {
               })
             end,
             ["pyright"] = function()
-              require("py_lsp").setup(default_config)
+              require("py_lsp").setup(lsp.default_config)
             end,
             ["hls"] = function()
               local ht = require("haskell-tools")
@@ -177,6 +129,10 @@ return {
         sources = {
           null_ls.builtins.formatting.stylua.with({
             extra_args = { "--indent-type", "spaces" },
+          }),
+          null_ls.builtins.diagnostics.markdownlint,
+          null_ls.builtins.formatting.mdformat.with({
+            extra_args = { "--wrap", "80", "--number" },
           }),
           --         null_ls.builtins.formatting.black,
           --         null_ls.builtins.formatting.isort.with({
