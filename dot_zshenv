@@ -25,8 +25,8 @@ export XDG_CONFIG_HOME=$HOME/.config
 export TERMINAL=wezterm-gui
 
 # Editing
-export EDITOR="lvim"
-export SUDO_EDITOR=$(which lvim)
+export EDITOR="nvim"
+export SUDO_EDITOR=$(which nvim)
 
 # Go
 export GOPATH="$HOME/.local/share/go"
