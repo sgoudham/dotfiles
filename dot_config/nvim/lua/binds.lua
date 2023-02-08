@@ -18,6 +18,8 @@ wk.register({
   n = { "nzzzv", "Next result (centered)" },
   N = { "Nzzzv", "Previous result (centered)" },
   J = { "mzJ`z", "Join lines (stable)" },
+  ["<leader>li"] = { "<cmd>LspInfo<cr>", "LSP Info" },
+  ["<leader>lI"] = { "<cmd>Mason<cr>", "Mason Info" },
 })
 
 -- visual binds
