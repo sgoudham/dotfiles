@@ -41,6 +41,7 @@ return {
         },
         custom_highlights = {
           ErrorMsg = { fg = cp.red, style = { "bold" } },
+          ["@function.builtin"] = { fg = cp.blue },
           LspInfoBorder = { link = "FloatBorder" },
           PmenuSel = { bg = cp.surface0 },
           FloatBorder = { fg = cp.overlay0, bg = "NONE" },
