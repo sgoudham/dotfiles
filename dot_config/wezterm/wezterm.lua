@@ -134,7 +134,7 @@ end)
 return {
   color_scheme = "Catppuccin Mocha",
   font = wezterm.font_with_fallback({ "VictorMono Nerd Font" }),
-  font_size = 14,
+  font_size = 13,
   background = {
     {
       source = { File = "Pictures/astronaut.png" },
