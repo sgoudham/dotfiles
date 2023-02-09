@@ -114,11 +114,17 @@ return {
       "simrat39/rust-tools.nvim",
       "mrcjkb/haskell-tools.nvim",
       "HallerPatrick/py_lsp.nvim",
-      { "SmiteshP/nvim-navic", config = { highlight = true } },
+      "mfussenegger/nvim-jdtls",
       "onsails/lspkind.nvim",
-      { "lukas-reineke/lsp-format.nvim", config = true },
-      "folke/neodev.nvim",
       "ray-x/lsp_signature.nvim",
+      {
+        "lukas-reineke/lsp-format.nvim",
+        config = {
+          java = {
+            exclude = { "jdtls" },
+          },
+        },
+      },
     },
   },
   {

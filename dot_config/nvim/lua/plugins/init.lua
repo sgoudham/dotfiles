@@ -5,5 +5,4 @@ return {
   "stevearc/dressing.nvim",
   "mong8se/actually.nvim",
   "andweeb/presence.nvim",
-  "mfussenegger/nvim-jdtls"
 }

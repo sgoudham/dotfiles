@@ -50,7 +50,7 @@ wk.register({
 
 -- nv leader binds
 wk.register({
-  d = { [["_d]], "Delete w/o yank" },
+  -- d = { [["_d]], "Delete w/o yank" },
   y = { [["+y]], "Yank to clipboard" },
 }, { prefix = "<leader>", mode = { "n", "v" } })
 

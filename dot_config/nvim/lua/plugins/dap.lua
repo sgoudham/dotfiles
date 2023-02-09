@@ -1,5 +1,5 @@
 local get_python_path = function()
-  for _, client in pairs(vim.lsp.buf_get_clients()) do
+  for _, client in pairs(vim.lsp.get_active_clients()) do
     if client.name == "pyright" then
       local path = client.config.settings.python.pythonPath
       if path ~= nil then
@@ -62,22 +62,58 @@ return {
       sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
     end,
     keys = {
+      { "<leader>bb", vim.cmd.DapToggleBreakpoint, desc = "Toggle Breakpoint" },
       {
-        "<leader>db",
-        vim.cmd.DapToggleBreakpoint,
-        desc = "Toggle breakpoint",
+        "<leader>bf",
+        function()
+          require("dap").list_breakpoints()
+        end,
+        desc = "List Breakpoints",
       },
+      {
+        "<leader>bc",
+        function()
+          require("dap").clear_breakpoints()
+        end,
+        desc = "Clear Breakpoints",
+      },
+
+      { "<leader>dc", vim.cmd.DapContinue, desc = "Start / Continue" },
+      {
+        "<leader>dj",
+        function()
+          require("dap").step_over()
+        end,
+        desc = "Step Over",
+      },
+      {
+        "<leader>dk",
+        function()
+          require("dap").step_into()
+        end,
+        desc = "Step Into",
+      },
+      {
+        "<leader>do",
+        function()
+          require("dap").step_out()
+        end,
+        desc = "Step Out",
+      },
+      {
+        "<leader>dd",
+        function()
+          require("dap").disconnect()
+        end,
+        desc = "Disconnect",
+      },
+
       {
         "<leader>du",
         function()
           require("dapui").toggle({})
         end,
         desc = "Toggle UI",
-      },
-      {
-        "<leader>dx",
-        vim.cmd.DapContinue,
-        desc = "Start / Continue",
       },
     },
     dependencies = {
