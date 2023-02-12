@@ -32,6 +32,7 @@ antigen apply
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Aliases
+alias magit="nvim '+Neogit kind=replace'"
 alias clipboard='xclip -sel clip'
 
 # Forcing 256 bit colour
