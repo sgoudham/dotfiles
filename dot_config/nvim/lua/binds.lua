@@ -46,6 +46,7 @@ wk.register({
   p = { [["+p]], "Put from clipboard" },
   w = { [[:w<CR>]], "Quick Save" },
   q = { [[:q<CR>]], "Quick Exit" },
+  Q = { [[:qa<CR>]], "Quick Exit All Buffers" },
 }, { prefix = "<leader>" })
 
 -- nv leader binds
