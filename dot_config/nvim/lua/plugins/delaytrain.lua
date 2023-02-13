@@ -1,9 +1,9 @@
 return {
   {
     "ja-ford/delaytrain.nvim",
-    config = {
+    opts = {
       grace_period = 3,
-      ignore_filetypes = { "help", "NvimTr*", "lazy", "mason" },
+      ignore_filetypes = { "Neogit*", "help", "NvimTr*", "lazy", "mason" },
     },
   },
 }
