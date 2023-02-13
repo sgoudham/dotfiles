@@ -1,6 +1,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
+    priority = 500,
     config = function()
       require("gitsigns").setup({
         on_attach = function(bufnr)
@@ -35,6 +36,7 @@ return {
           end, { expr = true }, "Previous Hunk")
 
           -- Actions
+          map({ "n", "v" }, "<leader>gg", ":Neogit<CR>", {}, "Open Git")
           map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", {}, "Stage Hunk")
           map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", {}, "Reset Hunk")
           map("n", "<leader>gS", gs.stage_buffer, {}, "Stage Buffer")
@@ -45,10 +47,10 @@ return {
             gs.blame_line({ full = true })
           end, {}, "Show Blame")
           map("n", "<leader>gb", gs.toggle_current_line_blame, {}, "Current Line Blame")
-          map("n", "<leader>gd", gs.diffthis, {}, "Diff This")
-          map("n", "<leader>gD", function()
-            gs.diffthis("~")
-          end, {}, "")
+          -- map("n", "<leader>gd", gs.diffthis, {}, "Diff This")
+          -- map("n", "<leader>gD", function()
+          --   gs.diffthis("~")
+          -- end, {}, "")
           map("n", "<leader>gd", gs.toggle_deleted, {}, "Show Deleted")
 
           -- Text object

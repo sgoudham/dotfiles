@@ -13,6 +13,7 @@ return {
         term_colors = true,
         no_italic = true,
         integrations = {
+          neogit = true,
           mason = true,
           native_lsp = { enabled = true },
           navic = {
@@ -52,7 +53,11 @@ return {
           TelescopeTitle = { fg = cp.subtext0 },
           QuickScopePrimary = { fg = cp.red },
           QuickScopeSecondary = { fg = cp.peach },
-          -- MiniIndentscopeSymbol = { fg = cp.blue },
+
+          DapStoppedLinehl = { bg = "#324430" },
+          DapBreakpointLinehl = { bg = "#492a32" },
+
+          NeogitDiffContextHighlight = { bg = "NONE" }
         },
       })
       vim.cmd.colorscheme("catppuccin")
