@@ -7,6 +7,12 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
+  underline = {
+    severity = { max = vim.diagnostic.severity.WARN },
+  },
+  virtual_text = {
+    severity = { min = vim.diagnostic.severity.ERROR },
+  },
   float = { border = "rounded" },
   update_in_insert = true,
 })
@@ -107,7 +113,12 @@ return {
           })
         end,
         dependencies = {
-          "williamboman/mason.nvim",
+          {
+            "williamboman/mason.nvim",
+            opts = {
+              ui = { border = "rounded" },
+            },
+          },
           { "folke/neodev.nvim", config = true },
         },
       },
@@ -116,15 +127,7 @@ return {
       "HallerPatrick/py_lsp.nvim",
       "mfussenegger/nvim-jdtls",
       "onsails/lspkind.nvim",
-      "ray-x/lsp_signature.nvim",
-      {
-        "lukas-reineke/lsp-format.nvim",
-        config = {
-          java = {
-            exclude = { "jdtls" },
-          },
-        },
-      },
+      "ray-x/lsp_signature.nvim" ,
     },
   },
   {
@@ -151,7 +154,7 @@ return {
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    config = {
+    opts = {
       ensure_installed = { "stylua" },
     },
   },
