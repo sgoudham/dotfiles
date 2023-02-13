@@ -16,6 +16,9 @@ vim.list_extend(
   )
 )
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 local function nnoremap(rhs, lhs, bufopts, desc)
   bufopts.desc = desc
   vim.keymap.set("n", rhs, lhs, bufopts)
@@ -56,6 +59,7 @@ function M.make_jdtls_config(root_dir, workspace_folder)
       allow_incremental_sync = true,
     },
     on_attach = on_attach,
+    capabilities = capabilities,
     root_dir = root_dir,
     init_options = {
       bundles = bundles,
@@ -64,6 +68,11 @@ function M.make_jdtls_config(root_dir, workspace_folder)
     -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     settings = {
       java = {
+        project = {
+          referencedLibraries = {
+            HOME .. "/University/Y3/S2/PL/programming-languages/lab-five/antlr.jar",
+          },
+        },
         format = {
           settings = {
             -- https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
