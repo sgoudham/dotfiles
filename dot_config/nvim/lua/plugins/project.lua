@@ -11,7 +11,6 @@ return {
           ".svn",
           "Makefile",
           "package.json",
-          "stylua.toml",
           "wezterm.lua",
         },
       })
