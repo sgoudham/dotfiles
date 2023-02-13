@@ -2,7 +2,7 @@ local M = {}
 
 M.default_config = {
   on_attach = function(client, bufnr)
-    require("lsp-format").on_attach(client)
+    require("lsp_signature").on_attach({}, bufnr)
 
     -- add lsp-only keybinds
     local map = function(sequence, cmd, desc)
