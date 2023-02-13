@@ -5,6 +5,7 @@ return {
     config = function()
       require("nvim-tree").setup({
         hijack_cursor = true,
+        hijack_netrw = false,
         sync_root_with_cwd = true,
         respect_buf_cwd = true,
         update_focused_file = {
@@ -13,6 +14,9 @@ return {
         },
         view = {
           centralize_selection = true,
+          width = {
+              max = 60
+          }
         },
         renderer = {
           group_empty = true,
