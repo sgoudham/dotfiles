@@ -3,20 +3,56 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- free real estate
+vim.opt.cmdheight = 0
+
 -- don't show status
 vim.opt.showmode = false
+
+-- https://www.reddit.com/r/neovim/comments/10fpqbp/gist_statuscolumn_separate_diagnostics_and/
+-- local M = {}
+-- _G.Status = M
+--
+-- ---@return {name:string, text:string, texthl:string}[]
+-- function M.get_signs()
+--   local buf = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+--   return vim.tbl_map(function(sign)
+--     return vim.fn.sign_getdefined(sign.name)[1]
+--   end, vim.fn.sign_getplaced(buf, { group = "*", lnum = vim.v.lnum })[1].signs)
+-- end
+--
+-- function M.column()
+--   local sign, git_sign
+--   for _, s in ipairs(M.get_signs()) do
+--     if s.name:find("GitSign") then
+--       git_sign = s
+--     else
+--       sign = s
+--     end
+--   end
+--   local components = {
+--     sign and ("%#" .. sign.texthl .. "#" .. sign.text .. "%*") or " ",
+--     [[%=]],
+--     [[%{&nu?(&rnu&&v:relnum?v:relnum:v:lnum):''} ]],
+--     git_sign and ("%#" .. git_sign.texthl .. "#" .. git_sign.text .. "%*") or "  ",
+--   }
+--   return table.concat(components, "")
+-- end
+--
+-- vim.opt.statuscolumn = [[%!v:lua.Status.column()]]
 
 -- don't jump around when signs appear
 vim.opt.signcolumn = "yes"
 
--- default to 4 spaces for indentation
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+-- default to 2 spaces for indentation
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
--- keep some lines at the top/bottom of the window
+-- keep some lines at the top/bottom/left/right of the window
 vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
 
 -- smarter smartindent
 vim.opt.cindent = true
