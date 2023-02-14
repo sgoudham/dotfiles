@@ -11,10 +11,10 @@ wk.register({
 -- normal binds
 wk.register({
   ["0"] = { "0^", "Start of Line" },
-  ["<CR>"] = { "o<ESC>", "New Line Without Insert" },
-  ["<C-s>"] = { "<cmd>write<cr>", "Save" },
+  ["<CR>"] = { "o<ESC>", "New Line" },
   ["<C-d>"] = { "<C-d>zz", "Half page down" },
   ["<C-u>"] = { "<C-u>zz", "Half page up" },
+
   n = { "nzzzv", "Next result (centered)" },
   N = { "Nzzzv", "Previous result (centered)" },
   J = { "mzJ`z", "Join lines (stable)" },
@@ -26,6 +26,8 @@ wk.register({
 wk.register({
   J = { ":m '>+1<CR>gv=gv", "Move line down" },
   K = { ":m '<-2<CR>gv=gv", "Move line up" },
+  ["<"] = { "<gv", "Better Left Indent" },
+  [">"] = { ">gv", "Better Right Indent" }
 }, { mode = "v" })
 
 -- terminal binds
