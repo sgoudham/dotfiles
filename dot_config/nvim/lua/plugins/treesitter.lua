@@ -29,6 +29,10 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "nvim-treesitter/playground",
+      {
+        "kana/vim-textobj-entire",
+        dependencies = { "kana/vim-textobj-user" },
+      },
     },
   },
 }

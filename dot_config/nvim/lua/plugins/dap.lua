@@ -67,7 +67,6 @@ return {
 
       -- apply suggestions from catppuccin theme
       local sign = vim.fn.sign_define
-
       sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "DapBreakpointLinehl", numhl = "" })
       sign("DapStopped", { text = "", texthl = "Error", linehl = "DapStoppedLinehl", numhl = "" })
       sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
@@ -116,7 +115,6 @@ return {
                 { id = "stacks", size = 0.15, },
                 { id = "repl", size = 0.05, },
                 { id = "scopes", size = 0.40, },
-                -- { id = "breakpoints", size = 0.25, },
                 { id = "watches", size = 0.40, },
               },
               position = "left",

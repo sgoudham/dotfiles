@@ -1,7 +1,6 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    priority = 500,
     config = function()
       require("gitsigns").setup({
         on_attach = function(bufnr)
@@ -47,10 +46,6 @@ return {
             gs.blame_line({ full = true })
           end, {}, "Show Blame")
           map("n", "<leader>gb", gs.toggle_current_line_blame, {}, "Current Line Blame")
-          -- map("n", "<leader>gd", gs.diffthis, {}, "Diff This")
-          -- map("n", "<leader>gD", function()
-          --   gs.diffthis("~")
-          -- end, {}, "")
           map("n", "<leader>gd", gs.toggle_deleted, {}, "Show Deleted")
 
           -- Text object

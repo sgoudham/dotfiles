@@ -9,7 +9,6 @@ return {
         components = ctp_feline.get(),
         force_inactive = {
           filetypes = {
-            -- "^NvimTree$",
             "^packer$",
             "^startify$",
             "^fugitive$",

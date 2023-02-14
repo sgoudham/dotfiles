@@ -2,7 +2,10 @@ local M = {}
 
 local HOME = os.getenv("HOME")
 local SDKMAN_DIR = os.getenv("SDKMAN_DIR")
+
 local lsp = require("lsp")
+local map = lsp.map
+
 local jdtls = require("jdtls")
 
 local bundles = {}
@@ -25,31 +28,18 @@ local function nnoremap(rhs, lhs, bufopts, desc)
 end
 
 local on_attach = function(client, bufnr)
+  lsp.default_config.on_attach(client, bufnr)
   require("jdtls").setup_dap({ hotcodereplace = "auto" })
   require("jdtls.dap").setup_dap_main_class_configs()
   require("jdtls.setup").add_commands()
-  lsp.default_config.on_attach(client, bufnr)
-
-  -- Regular Neovim LSP client keymappings
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  nnoremap("<leader>lwa", vim.lsp.buf.add_workspace_folder, bufopts, "Add workspace folder")
-  nnoremap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, bufopts, "Remove workspace folder")
-  nnoremap("<leader>lwl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts, "List workspace folders")
 
   -- Java extensions provided by jdtls
-  nnoremap("<leader>lo", jdtls.organize_imports, bufopts, "Organize imports")
-  nnoremap("<leader>le", jdtls.extract_variable, bufopts, "Extract variable")
-  nnoremap("<leader>lc", jdtls.extract_constant, bufopts, "Extract constant")
-  vim.keymap.set(
-    "v",
-    "<leader>lm",
-    [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
-    { noremap = true, silent = true, buffer = bufnr, desc = "Extract method" }
-  )
-  nnoremap("<leader>tc", jdtls.test_class, bufopts, "Test class (DAP)")
-  nnoremap("<leader>tm", jdtls.test_nearest_method, bufopts, "Test method (DAP)")
+  map("n", "<leader>lo", jdtls.organize_imports, { bufnr, "Organize Imports" })
+  map("n", "<leader>lle", jdtls.extract_variable, { bufnr, "Extract Variable" })
+  map("n", "<leader>llc", jdtls.extract_constant, { bufnr, "Extract Constant" })
+  map("v", "<leader>llm", "<ESC><CMD>lua require('jdtls').extract_method(true)<CR>", { bufnr, "Extract Method" })
+  map("n", "<leader>ltc", jdtls.test_class, { bufnr, "Test Class (DAP)" })
+  map("n", "<leader>ltm", jdtls.test_nearest_method, { bufnr, "Test Method (DAP)" })
 end
 
 function M.make_jdtls_config(root_dir, workspace_folder)

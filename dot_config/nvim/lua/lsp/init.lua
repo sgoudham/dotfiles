@@ -1,53 +1,38 @@
 local M = {}
 
+local map = function(mode, lhs, rhs, opts)
+  vim.keymap.set(mode, lhs, rhs, { buffer = opts[1], desc = opts[2] })
+end
+M.map = map
+
 M.default_config = {
-  on_attach = function(client, bufnr)
-    require("lsp_signature").on_attach({}, bufnr)
+  on_attach = function(_, bufnr)
+    map("n", "K", vim.lsp.buf.hover, { bufnr, "Hover Information" })
+    map("n", "]d", vim.diagnostic.goto_next, { bufnr, "Next Diagnostic" })
+    map("n", "[d", vim.diagnostic.goto_prev, { bufnr, "Previous Diagnostic" })
 
-    -- add lsp-only keybinds
-    local map = function(sequence, cmd, desc)
-      vim.keymap.set("n", sequence, cmd, { buffer = bufnr, desc = desc })
-    end
+    map("n", "gs", vim.lsp.buf.signature_help, { bufnr, "Signature Help" })
+    map("n", "gD", vim.lsp.buf.declaration, { bufnr, "Declarations" })
+    map("n", "gd", "<cmd>Telescope lsp_definitions<CR>", { bufnr, "Definitions" })
+    map("n", "gT", "<cmd>Telescope lsp_type_definitions<CR>", { bufnr, "Type Definitions" })
+    map("n", "gr", "<cmd>Telescope lsp_references<CR>", { bufnr, "References" })
+    map("n", "gI", "<cmd>Telescope lsp_implementations<CR>", { bufnr, "Implementations" })
+    map("n", "gl", function()
+      vim.diagnostic.open_float(0, { scope = "line" })
+    end, { bufnr, "LSP Line Diagnostics" })
 
-    map("K", vim.lsp.buf.hover, "Hover")
-    map("]d", vim.diagnostic.goto_next, "Next diagnostic")
-    map("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-
-    map("gs", vim.lsp.buf.signature_help, "LSP Signature Help")
-    map("gD", vim.lsp.buf.declaration, "LSP Declarations")
-    map("gd", function()
-      require("telescope.builtin").lsp_definitions()
-    end, "LSP Definitions")
-    map("gT", function()
-      require("telescope.builtin").lsp_type_definitions()
-    end, "LSP Type Definitions")
-    map("gr", function()
-      require("telescope.builtin").lsp_references()
-    end, "LSP References")
-    map("gI", function()
-      require("telescope.builtin").lsp_implementations()
-    end, "LSP Implementations")
-    map("gl", function()
-      vim.diagnostic.open_float(0, {
-        scope = "line",
-      })
-    end)
-
-    map("<leader>la", vim.lsp.buf.code_action, "Code Action")
-    map("<leader>lr", vim.lsp.buf.rename, "Rename")
-    map("<leader>lf", vim.lsp.buf.format, "Format")
-    map("<leader>ld", function()
-      require("telescope.builtin").diagnostics()
-    end, "LSP Workplace Diagnostics")
-    map("<leader>lD", function()
-      require("telescope.builtin").diagnostics({ bufnr = 0 })
-    end, "LSP Buffer Diagnostics")
-    map("<leader>ls", function()
-      require("telescope.builtin").lsp_document_symbols()
-    end, "LSP Document Symbols")
-    map("<leader>lS", function()
-      require("telescope.builtin").lsp_workspace_symbols()
-    end, "LSP Workplace Symbols")
+    map("n", "<leader>la", vim.lsp.buf.code_action, { bufnr, "Code Action" })
+    map("n", "<leader>lr", vim.lsp.buf.rename, { bufnr, "Rename" })
+    map("n", "<leader>lf", vim.lsp.buf.format, { bufnr, "Format" })
+    map("n", "<leader>ld", "<cmd>Telescope diagnostics<CR>", { bufnr, "Workspace Diagnostics" })
+    map("n", "<leader>lD", "<cmd>Telescope diagnostics bufnr=0<CR>", { bufnr, "Buffer Diagnostics" })
+    map("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<CR>", { bufnr, "Document Symbols" })
+    map("n", "<leader>lS", "<cmd>Telescope lsp_workspace_symbols<CR>", { bufnr, "Workspace Symbols" })
+    map("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, { bufnr, "Add Workspace Folder" })
+    map("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, { bufnr, "Remove Workspace Folder" })
+    map("n", "<leader>lwl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, { bufnr, "List Workspace Folders" })
   end,
 }
 

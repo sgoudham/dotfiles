@@ -36,13 +36,26 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
           require("mason-lspconfig").setup({
-            ensure_installed = { "rust_analyzer", "pyright", "sumneko_lua" },
+            ensure_installed = { "rust_analyzer", "pyright", "lua_ls" },
           })
           require("mason-lspconfig").setup_handlers({
             -- default handler
             function(server_name)
               require("lspconfig")[server_name].setup(lsp.default_config)
             end,
+
+            ["ltex"] = function()
+              require("lspconfig")["ltex"].setup({
+                on_attach = function(_, _)
+                  require("ltex_extra").setup({
+                    load_langs = { "es-AR", "en-US" },
+                    init_check = true,
+                    path = vim.fn.stdpath("data") .. "/dictionary",
+                  })
+                end,
+              })
+            end,
+
             ["rust_analyzer"] = function()
               -- https://github.com/simrat39/rust-tools.nvim/issues/300
               local config = custom_config({
@@ -67,9 +80,11 @@ return {
                 },
               })
             end,
+
             ["pyright"] = function()
               require("py_lsp").setup(lsp.default_config)
             end,
+
             ["hls"] = function()
               local ht = require("haskell-tools")
               local def_opts = { noremap = true, silent = true }
@@ -86,15 +101,16 @@ return {
               })
               -- Suggested keymaps that do not depend on haskell-language-server
               -- Toggle a GHCi repl for the current package
-              vim.keymap.set("n", "<leader>rr", ht.repl.toggle, def_opts)
+              -- vim.keymap.set("n", "<leader>rr", ht.repl.toggle, def_opts)
               -- Toggle a GHCi repl for the current buffer
-              vim.keymap.set("n", "<leader>rf", function()
-                ht.repl.toggle(vim.api.nvim_buf_get_name(0))
-              end, def_opts)
-              vim.keymap.set("n", "<leader>rq", ht.repl.quit, def_opts)
+              -- vim.keymap.set("n", "<leader>rf", function()
+              --   ht.repl.toggle(vim.api.nvim_buf_get_name(0))
+              -- end, def_opts)
+              -- vim.keymap.set("n", "<leader>rq", ht.repl.quit, def_opts)
             end,
-            ["sumneko_lua"] = function()
-              require("lspconfig")["sumneko_lua"].setup(custom_config({
+
+            ["lua_ls"] = function()
+              require("lspconfig")["lua_ls"].setup(custom_config({
                 settings = {
                   Lua = {
                     format = {
@@ -126,8 +142,15 @@ return {
       "mrcjkb/haskell-tools.nvim",
       "HallerPatrick/py_lsp.nvim",
       "mfussenegger/nvim-jdtls",
-      "onsails/lspkind.nvim",
-      "ray-x/lsp_signature.nvim" ,
+      {
+        "ray-x/lsp_signature.nvim",
+        opts = {
+          hint_enable = false,
+          hint_prefix = "",
+        },
+      },
+      "barreiroleo/ltex_extra.nvim",
+      "lervag/vimtex",
     },
   },
   {
@@ -155,7 +178,7 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     opts = {
-      ensure_installed = { "stylua" },
+      ensure_installed = { "stylua", "markdownlint", "clang-format" },
     },
   },
 }
