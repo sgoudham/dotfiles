@@ -1,7 +1,7 @@
 # vim:ft=zsh:fenc=utf-8
 
 # Shell Integration
-# source "$HOME/.config/wezterm/wezterm.sh"
+source "$HOME/.config/wezterm/wezterm.sh"
 
 # Prompt
 eval "$(starship init zsh)"
@@ -34,9 +34,6 @@ antigen apply
 # Aliases
 alias magit="nvim '+Neogit kind=replace'"
 alias clipboard='xclip -sel clip'
-
-# Forcing 256 bit colour
-export TERM=xterm-256color
 
 # Keep History
 export HISTFILE="$HOME/.zhistory"

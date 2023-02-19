@@ -132,6 +132,10 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 return {
+  set_environment_variables = {
+    ZVM_TERM = "xterm-256color"
+  },
+  term = "wezterm",
   color_scheme = "Catppuccin Mocha",
   font = wezterm.font_with_fallback({ "VictorMono Nerd Font" }),
   font_size = 13,
