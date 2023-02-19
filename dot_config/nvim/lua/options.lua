@@ -3,6 +3,9 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- highlight line number
+vim.opt.cursorline = true
+
 -- free real estate
 vim.opt.cmdheight = 0
 
