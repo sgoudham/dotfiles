@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
   map("n", "<leader>llc", jdtls.extract_constant, { bufnr, "Extract Constant" })
   map("v", "<leader>llm", "<ESC><CMD>lua require('jdtls').extract_method(true)<CR>", { bufnr, "Extract Method" })
   map("n", "<leader>ltc", jdtls.test_class, { bufnr, "Test Class (DAP)" })
-  map("n", "<leader>ltm", jdtls.test_nearest_method, { bufnr, "Test Method (DAP)" })
+  map("n", "<leader>tm", jdtls.test_nearest_method, { bufnr, "Test Method (DAP)" })
 end
 
 function M.make_jdtls_config(root_dir, workspace_folder)
@@ -60,7 +60,7 @@ function M.make_jdtls_config(root_dir, workspace_folder)
       java = {
         project = {
           referencedLibraries = {
-            HOME .. "/University/Y3/S2/PL/programming-languages/lab-five/antlr.jar",
+            HOME .. "/University/Y3/S2/programming-languages/warm-up/antlr.jar",
           },
         },
         format = {

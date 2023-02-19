@@ -15,13 +15,19 @@ return {
         integrations = {
           neogit = true,
           mason = true,
-          native_lsp = { enabled = true },
+          native_lsp = {
+            enabled = true,
+            underlines = {
+              errors = {},
+              hints = {},
+              warnings = {},
+              information = {},
+            },
+          },
           navic = {
             enabled = true,
             custom_bg = "NONE",
           },
-          noice = true,
-          notify = true,
           dap = {
             enabled = true,
             enable_ui = true,
@@ -57,7 +63,9 @@ return {
           DapStoppedLinehl = { bg = "#324430" },
           DapBreakpointLinehl = { bg = "#492a32" },
 
-          NeogitDiffContextHighlight = { bg = "NONE" }
+          NeogitDiffContextHighlight = { bg = "NONE" },
+
+          NavicText = { fg = cp.teal },
         },
       })
       vim.cmd.colorscheme("catppuccin")

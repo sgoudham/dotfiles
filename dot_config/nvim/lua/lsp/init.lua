@@ -6,7 +6,11 @@ end
 M.map = map
 
 M.default_config = {
-  on_attach = function(_, bufnr)
+  on_attach = function(client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+      require("nvim-navic").attach(client, bufnr)
+    end
+
     map("n", "K", vim.lsp.buf.hover, { bufnr, "Hover Information" })
     map("n", "]d", vim.diagnostic.goto_next, { bufnr, "Next Diagnostic" })
     map("n", "[d", vim.diagnostic.goto_prev, { bufnr, "Previous Diagnostic" })

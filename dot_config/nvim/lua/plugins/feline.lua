@@ -3,13 +3,12 @@ return {
     "feline-nvim/feline.nvim",
     config = function()
       local feline = require("feline")
-      local ctp_feline = require("catppuccin.groups.integrations.feline")
 
       feline.setup({
-        components = ctp_feline.get(),
+        components = require("extra.feline").get(),
         force_inactive = {
           filetypes = {
-            "^packer$",
+            "^lazy$",
             "^startify$",
             "^fugitive$",
             "^fugitiveblame$",
@@ -18,8 +17,6 @@ return {
           },
         },
       })
-      -- catppuccin statusline
-      ctp_feline.setup({})
     end,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
