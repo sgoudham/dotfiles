@@ -1,8 +1,8 @@
 -- https://sookocheff.com/post/vim/neovim-java-ide/ :bless:
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+vim.opt_local.shiftwidth = 4
+vim.opt_local.tabstop = 4
+vim.opt_local.softtabstop = 4
 
 local root_markers = { "gradlew", "mvnw", ".git", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
