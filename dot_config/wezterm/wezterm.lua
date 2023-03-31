@@ -172,7 +172,7 @@ return {
     -- Zoom
     { key = "z", mods = "ALT|SHIFT", action = wezterm.action.TogglePaneZoomState },
     -- Copy / Paste
-    { key = "C", mods = "CTRL", action = wezterm.action.Copy },
+    { key = "C", mods = "CTRL", action = wezterm.action.CopyTo("Clipboard") },
     { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
 
     -- Open Pane
