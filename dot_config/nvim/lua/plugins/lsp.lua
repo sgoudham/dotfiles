@@ -36,7 +36,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
           require("mason-lspconfig").setup({
-            ensure_installed = { "rust_analyzer", "pyright", "lua_ls" },
+            ensure_installed = { "rust_analyzer", "pyright", "lua_ls", "marksman" },
           })
           require("mason-lspconfig").setup_handlers({
             -- default handler
@@ -45,14 +45,11 @@ return {
             end,
 
             ["ltex"] = function()
-              require("lspconfig")["ltex"].setup({
-                on_attach = function(_, _)
-                  require("ltex_extra").setup({
-                    load_langs = { "es-AR", "en-US" },
-                    init_check = true,
-                    path = vim.fn.stdpath("data") .. "/dictionary",
-                  })
-                end,
+              require("lspconfig")["ltex"].setup(lsp.default_config)
+              require("ltex_extra").setup({
+                load_langs = { "es-AR", "en-US" },
+                init_check = true,
+                path = vim.fn.stdpath("data") .. "/dictionary",
               })
             end,
 
@@ -159,6 +156,9 @@ return {
       local null_ls = require("null-ls")
       null_ls.setup({
         sources = {
+          null_ls.builtins.formatting.ruff,
+          null_ls.builtins.formatting.yamlfmt,
+          null_ls.builtins.formatting.latexindent,
           null_ls.builtins.formatting.beautysh,
           null_ls.builtins.formatting.stylua.with({
             extra_args = { "--indent-type", "spaces" },

@@ -492,24 +492,24 @@ function M.get()
     },
   }
 
-  components.active[3][6] = {
-    provider = function()
-      local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-      return " " .. assets.dir .. " " .. dir_name .. " "
-    end,
-    enabled = is_enabled(80),
-    hl = {
-      fg = sett.text,
-      bg = sett.curr_dir,
-    },
-    left_sep = {
-      str = assets.left_separator,
-      hl = {
-        fg = sett.curr_dir,
-        bg = sett.curr_file,
-      },
-    },
-  }
+  -- components.active[3][6] = {
+  --   provider = function()
+  --     local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  --     return " " .. assets.dir .. " " .. dir_name .. " "
+  --   end,
+  --   enabled = is_enabled(80),
+  --   hl = {
+  --     fg = sett.text,
+  --     bg = sett.curr_dir,
+  --   },
+  --   left_sep = {
+  --     str = assets.left_separator,
+  --     hl = {
+  --       fg = sett.curr_dir,
+  --       bg = sett.curr_file,
+  --     },
+  --   },
+  -- }
   -- ######## Right
 
   -- Inanctive components
