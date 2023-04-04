@@ -1,6 +1,7 @@
 # PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/scripts"
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 # JetBrains Toolbox
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
