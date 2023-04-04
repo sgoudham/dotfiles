@@ -155,7 +155,7 @@ map <leader>rf <Action>(ChooseRunConfiguration)
 
 " Git stuffs
 map <leader>gg <Action>(ActivateCommitToolWindow)
-map <leader>gx <Action>(Vcs.RollbackChangedLines)
+map <leader>gr <Action>(Vcs.RollbackChangedLines)
 
 " Hello terminal :D
 map <leader>t <Action>(ActivateTerminalToolWindow)
