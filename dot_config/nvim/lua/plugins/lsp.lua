@@ -82,30 +82,6 @@ return {
               require("py_lsp").setup(lsp.default_config)
             end,
 
-            ["hls"] = function()
-              local ht = require("haskell-tools")
-              local def_opts = { noremap = true, silent = true }
-              ht.setup({
-                hls = {
-                  on_attach = function(client, bufnr)
-                    local opts = vim.tbl_extend("keep", def_opts, { buffer = bufnr })
-                    -- haskell-language-server relies heavily on codeLenses,
-                    -- so auto-refresh (see advanced configuration) is enabled by default
-                    -- vim.keymap.set("n", "<space>ca", vim.lsp.codelens.run, opts)
-                    -- vim.keymap.set("n", "<space>hs", ht.hoogle.hoogle_signature, opts)
-                  end,
-                },
-              })
-              -- Suggested keymaps that do not depend on haskell-language-server
-              -- Toggle a GHCi repl for the current package
-              -- vim.keymap.set("n", "<leader>rr", ht.repl.toggle, def_opts)
-              -- Toggle a GHCi repl for the current buffer
-              -- vim.keymap.set("n", "<leader>rf", function()
-              --   ht.repl.toggle(vim.api.nvim_buf_get_name(0))
-              -- end, def_opts)
-              -- vim.keymap.set("n", "<leader>rq", ht.repl.quit, def_opts)
-            end,
-
             ["lua_ls"] = function()
               require("lspconfig")["lua_ls"].setup(custom_config({
                 settings = {
@@ -136,7 +112,39 @@ return {
         },
       },
       "simrat39/rust-tools.nvim",
-      "mrcjkb/haskell-tools.nvim",
+      {
+        "ray-x/go.nvim",
+        dependencies = { -- optional packages
+          "ray-x/guihua.lua",
+          "neovim/nvim-lspconfig",
+          "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+          require("go").setup()
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", "gomod" },
+      },
+      {
+        "mrcjkb/haskell-tools.nvim",
+        branch = "1.x.x",
+        config = function()
+          local ht = require("haskell-tools")
+          local def_opts = { noremap = true, silent = true }
+
+          ht.setup({
+            hls = {
+              on_attach = function(client, bufnr)
+                local opts = vim.tbl_extend("keep", def_opts, { buffer = bufnr })
+                -- haskell-language-server relies heavily on codeLenses,
+                -- so auto-refresh (see advanced configuration) is enabled by default
+                vim.keymap.set("n", "<space>ca", vim.lsp.codelens.run, opts)
+                vim.keymap.set("n", "<space>le", ht.lsp.buf_eval_all, opts)
+              end,
+            },
+          })
+        end,
+      },
       "HallerPatrick/py_lsp.nvim",
       "mfussenegger/nvim-jdtls",
       {

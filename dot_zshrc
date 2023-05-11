@@ -6,34 +6,34 @@ source "$HOME/.config/wezterm/wezterm.sh"
 # Prompt
 eval "$(starship init zsh)"
 
-# Plugins - Antigen 
-ADOTDIR="$HOME/.local/share/antigen"
-if [[ ! -d "$ADOTDIR" ]]; then
-  mkdir -p "$ADOTDIR"
-  curl -L https://git.io/antigen > "$ADOTDIR/antigen.zsh"
-  chmod +x "$ADOTDIR"
-fi
+# source antidote
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 
-# Load Antigen
-source "$ADOTDIR/antigen.zsh"
-antigen use oh-my-zsh
-antigen bundle colored-man-pages
-antigen bundle colorize
-antigen bundle command-not-found
-antigen bundle git
-antigen bundle jeffreytse/zsh-vi-mode
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
+# set omz variables
+ZSH=$(antidote path ohmyzsh/ohmyzsh)
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
+[[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
 
-antigen apply
+# initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
+antidote load
 
 # Make 'less' friendlier for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# Konf
+# source <(konf-go shellwrapper zsh)
+# Autocompletion
+# source <(konf completion zsh)
+# Auto load context
+# export KUBECONFIG=$(konf set -)
+
 # Aliases
 alias magit="nvim '+Neogit kind=replace'"
 alias clipboard='xclip -sel clip'
+alias dc="docker compose"
+alias dcud="docker compose down && docker compose up -d"
+alias kctx="konf set"
+alias kns="konf ns"
 
 # Keep History
 export HISTFILE="$HOME/.zhistory"
@@ -59,6 +59,22 @@ fi
 function mkcd() {
   mkdir -p $@ && cd ${@:$#}
 }
+
+# Use 'wezterm ssh' if available
+function ssh() {
+  if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+    bj wezterm ssh $@
+  else
+    echo "Falling back to normal 'ssh' as WezTerm hasn't been detected"
+    command ssh $@
+  fi
+}
+
+# Easily run background jobs
+function bj() {
+  nohup $@ </dev/null &>/dev/null &
+}
+   
 
 # Display images in the terminal
 function icat() {
@@ -118,6 +134,8 @@ function icat() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(direnv hook zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

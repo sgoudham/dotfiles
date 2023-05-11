@@ -1,7 +1,18 @@
+# Needed for .antidote
+# https://github.com/mattmc3/antidote/issues/24
+autoload -Uz compinit && compinit
+
+# I don't even know anymore...
+# https://github.com/ohmyzsh/ohmyzsh/issues/10581
+source <(kubectl completion zsh)
+
 # PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/scripts"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+
+# Krew
+export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
 
 # JetBrains Toolbox
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
