@@ -32,11 +32,6 @@ in {
         Catppuccin-mocha = getTheme "mocha";
       };
     };
-    mcfly = {
-      enable = false;
-      fuzzySearchFactor = 3;
-      keyScheme = "vim";
-    };
     btop = {
       enable = true;
       settings = {
