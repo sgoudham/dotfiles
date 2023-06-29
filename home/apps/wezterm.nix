@@ -14,5 +14,11 @@
     source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/wezterm";
     recursive = true;
   };
-  home.file.".terminfo/w/wezterm".source = wezterm/wezterm_terminfo;
+
+  home.file = {
+    ".terminfo/w/wezterm_terminfo" = {
+      source = wezterm/wezterm_terminfo;
+      onChange = "tic -x -o .terminfo .terminfo/w/wezterm_terminfo";
+    };
+  };
 }
