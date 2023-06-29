@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# study stream aliases
+# Requires https://github.com/caarlos0/timer to be installed.
+
+declare -A pomo_options
+pomo_options["work"]="25"
+pomo_options["break"]="5"
+
+exit_if_ctrl_c() {
+    exit
+}
+
+trap exit_if_ctrl_c SIGINT
+
+pomodoro() {
+    if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
+        val=$1
+        echo $val | lolcat
+        timer ${pomo_options["$val"]}m
+        notify-send "'$val' session done"
+    fi
+}
+
+cycle_work_break() {
+    for i in $(seq $1); do
+        pomodoro 'work'
+        pomodoro 'break'
+    done
+}
+
+cycle_work_break $1
