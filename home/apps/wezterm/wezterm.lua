@@ -150,7 +150,7 @@ wezterm.plugin.require("https://github.com/catppuccin/wezterm").apply_to_config(
   sync_flavors = { light = "latte", dark = "mocha" },
 })
 
-require("wezterm-bar.plugin").apply_to_config(c, {
+wezterm.plugin.require("https://github.com/sgoudham/wezterm-bar").apply_to_config(c, {
   indicator = {
     leader = { enabled = false },
   },

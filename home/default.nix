@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    # ./apps/wezterm.nix
+    ./apps/wezterm.nix
     # ./apps/zsh.nix
     ./apps/fonts.nix
     ./apps/git.nix
