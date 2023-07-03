@@ -32,6 +32,7 @@
     alejandra
     fd
     vivid
+    git-view
   ];
   home.sessionVariables = {
     EDITOR = "nvim";

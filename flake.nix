@@ -13,6 +13,7 @@
     };
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    git-view.url = "github:sgoudham/git-view/v1.0.0";
   };
 
   nixConfig = {
@@ -35,11 +36,13 @@
     nekowinston-nur,
     home-manager,
     nix-index-database,
+    git-view,
     ...
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     overlays = final: prev: {
+      git-view = git-view.packages.${system}.default;
       nur = import nur {
         nurpkgs = prev;
         pkgs = prev;
