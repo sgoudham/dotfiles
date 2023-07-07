@@ -10,6 +10,7 @@
     ./apps/fonts.nix
     ./apps/git.nix
     ./apps/fish.nix
+    ./apps/nvim.nix
     ./apps/k8s.nix
     ./apps/nap.nix
     ./apps/go.nix
@@ -35,8 +36,6 @@
     git-view
   ];
   home.sessionVariables = {
-    EDITOR = "nvim";
-    SUDO_EDITOR = "nvim";
     TERMINAL = "wezterm-gui";
     LIBVA_DRIVER_NAME = "iHD";
     LS_COLORS = "$(vivid generate catppuccin-mocha)";

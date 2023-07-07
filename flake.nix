@@ -5,15 +5,17 @@
     # At the time of writing, nixos-unstable doesn't work for home manager
     # FIXME: https://github.com/NixOS/nixpkgs/issues/236940#issuecomment-1585223723
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
-    nur.url = "github:nix-community/nur";
-    nekowinston-nur.url = "github:nekowinston/nur";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/nur";
+    nekowinston-nur.url = "github:nekowinston/nur";
+
     git-view.url = "github:sgoudham/git-view/v1.0.0";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   nixConfig = {
@@ -36,6 +38,7 @@
     nekowinston-nur,
     home-manager,
     nix-index-database,
+    neovim-nightly-overlay,
     git-view,
     ...
   }: let
@@ -63,6 +66,7 @@
         ({config, ...}: {
           config = {
             nixpkgs.overlays = [
+              neovim-nightly-overlay.overlay
               overlays
             ];
           };
