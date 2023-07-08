@@ -43,7 +43,6 @@
     GRAALVM_HOME = "$SDKMAN_DIR/candidates/java/22.3.r17-grl";
   };
   home.sessionPath = [
-    "${config.xdg.dataHome}/nvim/mason/bin"
     "${config.xdg.dataHome}/JetBrains/Toolbox/scripts"
     "${config.xdg.dataHome}/scripts"
   ];
