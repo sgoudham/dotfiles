@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local act = wezterm.action
 local c = wezterm.config_builder()
 
 c.set_environment_variables = {
@@ -20,7 +19,7 @@ c.font_size = 12
 
 c.default_prog = { "fish", "-l" }
 
-c.window_padding = { top = 1, bottom = 1, left = 1, right = 1 }
+c.window_padding = { top = 0, bottom = 0, left = 0, right = 0 }
 c.adjust_window_size_when_changing_font_size = false
 c.window_decorations = "RESIZE"
 c.window_close_confirmation = "NeverPrompt"
@@ -100,6 +99,6 @@ custom.tab_bar.new_tab.bg_color = "#080808"
 c.color_schemes = {
   ["OLEDppuccin"] = custom,
 }
-c.color_scheme = "OLEDppuccin"
+c.color_scheme = "Catppuccin Mocha"
 
 return c
