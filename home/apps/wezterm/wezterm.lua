@@ -25,7 +25,6 @@ c.window_decorations = "RESIZE"
 c.window_close_confirmation = "NeverPrompt"
 
 c.use_fancy_tab_bar = false
-c.tab_bar_at_bottom = true
 c.hide_tab_bar_if_only_one_tab = true
 c.tab_max_width = 32
 c.scrollback_lines = 1000000
@@ -70,6 +69,7 @@ wezterm.plugin.require("https://github.com/catppuccin/wezterm").apply_to_config(
 })
 
 wezterm.plugin.require("https://github.com/sgoudham/wezterm-bar").apply_to_config(c, {
+  position = "top",
   indicator = {
     leader = { enabled = false },
   },
