@@ -26,6 +26,34 @@ return {
     },
   },
   {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, {
+          -- lsp
+          "deno",
+          "nil",
+          "ltex-ls",
+          "marksman",
+          "yaml-language-server",
+          -- linter
+          "yamllint",
+          "jsonlint",
+        })
+      end
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, {
+          "nix",
+        })
+      end
+    end,
+  },
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-emoji",
