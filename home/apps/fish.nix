@@ -287,21 +287,7 @@ in {
         set fish_cursor_replace_one underscore
         set fish_cursor_visual block
 
-        function pythonEnv --description 'start a nix-shell with the given python packages' --argument pythonVersion
-          if set -q argv[2]
-            set argv $argv[2..-1]
-          end
-
-          for el in $argv
-            set ppkgs $ppkgs "python"$pythonVersion"Packages.$el"
-          end
-
-          nix-shell -p $ppkgs
-        end
-
-
         bind -s --user -M insert \e "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f repaint-mode; end"
-        # bind -s --user -M insert \t accept-autosuggestion
 
         yes | fish_config theme save "Catppuccin Mocha"
       '';
@@ -328,8 +314,5 @@ in {
       url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Mocha.theme";
       sha256 = "sha256-MlI9Bg4z6uGWnuKQcZoSxPEsat9vfi5O1NkeYFaEb2I=";
     });
-  };
-  xdg.dataFile = {
-    "scripts" = symlink "home/apps/scripts" {recursive = true;};
   };
 }

@@ -34,6 +34,7 @@
     fd
     vivid
     git-view
+    nur.repos.nekowinston.icat
   ];
   home.sessionVariables = {
     TERMINAL = "wezterm-gui";
