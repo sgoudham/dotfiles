@@ -1,4 +1,14 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  flakePath,
+  ...
+}: let
+  symlink = fileName: {recursive ? false}: {
+    source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/${fileName}";
+    inherit recursive;
+  };
+in {
   programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -22,7 +32,7 @@
     SUDO_EDITOR = "nvim";
   };
 
-  programs.fish.shellAbbrs = {
-    "lvim" = "NVIM_APPNAME=lazyvim nvim";
+  xdg.configFile = {
+    "nvim" = symlink "home/apps/nvim" {recursive = true;};
   };
 }
