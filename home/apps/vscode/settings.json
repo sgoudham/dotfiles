@@ -1,0 +1,202 @@
+{
+  "workbench.startupEditor": "none",
+  "workbench.reduceMotion": "on",
+  "workbench.commandPalette.preserveInput": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 10,
+  // Theme
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "catppuccin.italicComments": false,
+  "catppuccin.italicKeywords": false,
+  "catppuccin.accentColor": "pink",
+  "window.titleBarStyle": "custom",
+  "workbench.iconTheme": "catppuccin-mocha",
+  // Editor
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
+  "editor.fontWeight": "bold",
+  "editor.tabSize": 2,
+  "editor.lineNumbers": "relative",
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.mouseWheelZoom": true,
+  "editor.minimap.autohide": true,
+  "editor.inlayHints.padding": true,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": false,
+  "editor.formatOnSave": false,
+  "editor.suggest.preview": true,
+  "errorLens.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
+  "errorLens.fontWeight": "bold",
+  // Terminal
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontWeight": "bold",
+  // Nix
+  "nix.enableLanguageServer": true, // Enable LSP.
+  "nix.serverPath": "/home/hammy/.nix-profile/bin/nil", // The path to the LSP server executable.
+  "[nix]": {
+    "editor.defaultFormatter": "kamadorueda.alejandra",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false
+  },
+  "alejandra.program": "/home/hammy/.nix-profile/bin/alejandra",
+  // Vim
+  "vim.leader": "<space>",
+  "vim.easymotion": true,
+  "vim.easymotionDimBackground": false,
+  "vim.useSystemClipboard": false,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.handleKeys": {
+    "<C-a>": false, // select all
+    "<C-c>": false, // copy
+    "<C-x>": false, // cut
+    "<C-v>": false, // paste
+    "<C-f>": false // find
+  },
+  "vim.useCtrlKeys": true,
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Make sure to use VsCode's undo stack -> https://github.com/VSCodeVim/Vim/issues/1490
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["<C-r>"],
+      "commands": ["redo"]
+    },
+    // Helpful Stuff
+    {
+      "before": ["/"],
+      "commands": ["actions.find"]
+    },
+    {
+      "before": ["<CR>"],
+      "after": ["o", "<ESC>"]
+    },
+    {
+      "before": ["0"],
+      "after": ["^"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["[", "c"],
+      "commands": ["workbench.action.editor.previousChange"]
+    },
+    {
+      "before": ["]", "c"],
+      "commands": ["workbench.action.editor.nextChange"]
+    },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    // EasyMotion
+    {
+      "before": ["s"],
+      "after": ["<leader>", "<leader>"]
+    },
+    // Git
+    {
+      "before": ["<leader>", "g", "g"],
+      "commands": ["workbench.view.scm"]
+    },
+    {
+      "before": ["<leader>", "g", "h"],
+      "commands": ["toggle.diff.renderSideBySide"]
+    },
+    {
+      "before": ["<leader>", "g", "p"],
+      "commands": ["git.openChange"]
+    },
+    // LSP
+    {
+      "before": ["<space>", "l", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<space>", "l", "r"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<space>", "<space>"],
+      "commands": ["editor.action.quickFix"]
+    },
+    // Tabs
+    {
+      "before": ["<space>", "o"],
+      "commands": ["workbench.action.closeOtherEditors"]
+    }
+  ],
+  "[python]": {
+    "editor.formatOnType": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.autofetch": true,
+  "redhat.telemetry.enabled": false,
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDragAndDrop": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.confirmSync": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "rust-analyzer.check.command": "clippy",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

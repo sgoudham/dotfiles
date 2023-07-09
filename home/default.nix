@@ -52,6 +52,11 @@
   };
 
   xdg.configFile."ideavim/ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/ideavim/ideavimrc";
+  xdg.configFile = {
+    "Code/User/keybindings.json".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/vscode/keybindings.json";
+    "Code/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/vscode/settings.json";
+  };
+
   xdg.mime.enable = true;
   # turn off if on nixos (you have bigger problems than that if you get to this point)
   targets.genericLinux.enable = true;
