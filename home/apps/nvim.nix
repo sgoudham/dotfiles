@@ -25,6 +25,7 @@ in {
 
     extraPackages = with pkgs; [
       tree-sitter
+      lazygit
     ];
   };
 
