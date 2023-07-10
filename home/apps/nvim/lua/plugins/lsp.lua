@@ -2,6 +2,27 @@ return {
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      local function swap_prefix(before, after)
+        for _, keymap in ipairs(keys) do
+          local key = keymap[1]
+          if key:sub(1, #before) == before then
+            keymap[1] = after .. key:sub(#before + 1)
+          end
+        end
+      end
+
+      local leader_c = "<leader>c"
+      local leader_l = "<leader>l"
+      swap_prefix(leader_c, leader_l)
+      require("which-key").register({
+        [leader_c] = "pkgs",
+        [leader_l] = "code",
+      })
+
+      keys[#keys + 1] = { "gl", vim.diagnostic.open_float, "Line Diagnostics" }
+    end,
     opts = {
       diagnostics = {
         underline = false,
