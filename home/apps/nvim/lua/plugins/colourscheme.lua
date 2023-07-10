@@ -3,8 +3,8 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
-      styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
+      styles = {
+        comments = { "italic" },
       },
       integrations = {
         navic = {

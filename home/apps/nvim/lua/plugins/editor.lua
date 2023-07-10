@@ -35,19 +35,13 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
-      window = {
-        mappings = {
-          ["o"] = "open",
-        },
-      },
+      window = { mappings = { ["o"] = "open" } },
     },
   },
   {
     "stevearc/dressing.nvim",
     opts = {
-      input = {
-        insert_only = false,
-      },
+      input = { insert_only = false },
     },
   },
   {

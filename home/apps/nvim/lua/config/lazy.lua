@@ -19,15 +19,11 @@ require("lazy").setup({
   },
   defaults = {
     lazy = false,
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
     version = false, -- always use the latest git commit
   },
   install = { colorscheme = { "catppuccin" } },
-  change_detection = {
-    notify = false,
-  },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  change_detection = { notify = false },
+  checker = { enabled = true },
   performance = {
     rtp = {
       disabled_plugins = {

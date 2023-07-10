@@ -1,5 +1,15 @@
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, {
+          "nix",
+        })
+      end
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     init = function()
@@ -24,23 +34,15 @@ return {
       keys[#keys + 1] = { "gl", vim.diagnostic.open_float, "Line Diagnostics" }
     end,
     opts = {
-      diagnostics = {
-        underline = false,
-      },
-      inlay_hints = {
-        enabled = true,
-      },
+      diagnostics = { underline = false },
+      inlay_hints = { enabled = true },
       autoformat = false,
       ---@type lspconfig.options
       servers = {
         lua_ls = {
           ---@type LazyKeys[]
           settings = {
-            Lua = {
-              telemetry = {
-                enabled = false,
-              },
-            },
+            Lua = { telemetry = { enabled = false } },
           },
         },
       },
@@ -64,16 +66,7 @@ return {
       end
     end,
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if type(opts.ensure_installed) == "table" then
-        vim.list_extend(opts.ensure_installed, {
-          "nix",
-        })
-      end
-    end,
-  },
+
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -90,6 +83,7 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
+      opts.experimental.ghost_text = false
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<M-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<M-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -119,22 +113,7 @@ return {
           end
         end, { "i", "s" }),
       })
-
-      opts.experimental.ghost_text = false
     end,
-  },
-  {
-    "simrat39/rust-tools.nvim",
-    opts = {
-      tools = {
-        inlay_hints = {
-          auto = false,
-        },
-      },
-    },
-  },
-  {
-    "lervag/vimtex",
   },
   {
     "echasnovski/mini.surround",
@@ -150,4 +129,11 @@ return {
       },
     },
   },
+  {
+    "simrat39/rust-tools.nvim",
+    opts = {
+      tools = { inlay_hints = { auto = false } },
+    },
+  },
+  { "lervag/vimtex" },
 }
