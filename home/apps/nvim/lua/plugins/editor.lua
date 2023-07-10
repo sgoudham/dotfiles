@@ -7,11 +7,19 @@ return {
   },
   {
     "folke/noice.nvim",
-    opts = {
-      presets = {
-        lsp_doc_border = true,
-      },
-    },
+    opts = function(_, opts)
+      table.insert(opts.routes, {
+        filter = {
+          any = {
+            { event = "notify", find = "No information available" },
+            { event = "msg_show", find = "fewer lines" },
+            { event = "msg_show", find = "more lines" },
+          },
+        },
+        opts = { skip = true },
+      })
+      opts.presets.lsp_doc_border = false
+    end,
   },
   {
     "folke/persistence.nvim",
