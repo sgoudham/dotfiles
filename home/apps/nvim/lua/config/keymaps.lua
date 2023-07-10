@@ -1,23 +1,9 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
 
 local function unmap(mode, key)
   vim.keymap.del(mode, key, {})
 end
-
-unmap("n", "<leader>ww")
-unmap("n", "<leader>w-")
-unmap("n", "<leader>w|")
-unmap("n", "<leader>wd")
-unmap("n", "<leader>l")
-unmap("n", "H")
-unmap("n", "L")
-unmap("i", "<M-j>")
-unmap("i", "<M-k>")
-require("which-key").register({
-  ["<leader>w"] = "which_key_ignore",
-})
 
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
@@ -33,14 +19,32 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+-- Unbind stuff relating to splitting windows
+unmap("n", "<leader>ww")
+unmap("n", "<leader>w-")
+unmap("n", "<leader>w|")
+unmap("n", "<leader>wd")
+require("which-key").register({
+  ["<leader>w"] = "which_key_ignore",
+})
+-- Restore "H" & "L" from neovim
+unmap("n", "H")
+unmap("n", "L")
+-- Unbind moving lines with ALT in INSERT mode
+unmap("i", "<M-j>")
+unmap("i", "<M-k>")
+-- Move ":Lazy" from "<leader>l" to "<leader>cm"
+unmap("n", "<leader>l")
+map("n", "<leader>cl", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
 map("n", "0", "0^", { desc = "which_key_ignore " })
 map("n", "<CR>", "o<ESC>", { desc = "which_key_ignore " })
 map("n", "<C-u>", "<C-u>zz", { desc = "which_key_ignore " })
 map("n", "<C-d>", "<C-d>zz", { desc = "which_key_ignore " })
 
-map("n", "<leader>w", "<cmd>w<CR>", { desc = "which_key_ignore", nowait = true })
-map("n", "<leader>Q", "<cmd>qa<CR>", { desc = "which_key_ignore" })
-map("n", "<leader>q", "<cmd>q<CR>", { desc = "which_key_ignore", nowait = true })
+map("n", "<leader>w", "<cmd>w<cr>", { desc = "which_key_ignore", nowait = true })
+map("n", "<leader>Q", "<cmd>qa<cr>", { desc = "which_key_ignore" })
+map("n", "<leader>q", "<cmd>q<cr>", { desc = "which_key_ignore", nowait = true })
 
 -- Clipboard
 map("n", "<leader>y", [["+y]], { desc = "which_key_ignore" })
