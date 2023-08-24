@@ -13,6 +13,7 @@
     ./apps/nvim.nix
     ./apps/k8s.nix
     ./apps/nap.nix
+    ./apps/python.nix
     ./apps/go.nix
     ./apps/deno.nix
     ./apps/rust.nix

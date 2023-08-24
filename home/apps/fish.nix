@@ -125,6 +125,13 @@ in {
         cpub = "cargo publish";
         cpubdry = "cargo publish --dry-run";
 
+        # Python
+        pa = "poetry add";
+        pad = "poetry add --group dev";
+        pi = "poetry install";
+        pr = "poetry run";
+        psh = "poetry shell";
+
         # Kubectl
 
         # TODO: Migrate these to fish functions
