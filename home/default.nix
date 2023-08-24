@@ -28,8 +28,9 @@
 
   home.username = "hammy";
   home.homeDirectory = "/home/hammy";
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
   home.packages = with pkgs; [
+    wineWowPackages.stable
     imagemagick
     alejandra
     fd
@@ -41,8 +42,8 @@
     TERMINAL = "wezterm-gui";
     LIBVA_DRIVER_NAME = "iHD";
     LS_COLORS = "$(vivid generate catppuccin-mocha)";
-    JAVA_HOME = "$SDKMAN_DIR/candidates/java/current";
-    GRAALVM_HOME = "$SDKMAN_DIR/candidates/java/22.3.r17-grl";
+    JAVA_HOME = "${config.home.homeDirectory}/.sdkman/candidates/java/current";
+    GRAALVM_HOME = "${config.home.homeDirectory}/.sdkman/candidates/java/22.3.r17-grl";
   };
   home.sessionPath = [
     "${config.xdg.dataHome}/JetBrains/Toolbox/scripts"
