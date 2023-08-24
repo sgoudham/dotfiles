@@ -19,6 +19,8 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+-- Unbind "entering normal mode" when in terminal
+unmap("t", "<esc><esc>")
 -- Unbind stuff relating to splitting windows
 unmap("n", "<leader>ww")
 unmap("n", "<leader>w-")
@@ -30,9 +32,9 @@ require("which-key").register({
 -- Restore "H" & "L" from neovim
 unmap("n", "H")
 unmap("n", "L")
--- Unbind moving lines with ALT in INSERT mode
-unmap("i", "<M-j>")
-unmap("i", "<M-k>")
+-- Unbind moving lines with ALT in INSERT/VISUAL mode
+unmap({"i", "v"}, "<M-j>")
+unmap({"i", "v"}, "<M-k>")
 -- Move ":Lazy" from "<leader>l" to "<leader>cm"
 unmap("n", "<leader>l")
 map("n", "<leader>cl", "<cmd>Lazy<cr>", { desc = "Lazy" })

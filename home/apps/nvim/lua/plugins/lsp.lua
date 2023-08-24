@@ -7,6 +7,10 @@ return {
           "nix",
         })
       end
+      opts.indent = {
+        enable = true,
+        disable = { "python", "yaml" },
+      }
     end,
   },
   {
@@ -45,6 +49,22 @@ return {
             Lua = { telemetry = { enabled = false } },
           },
         },
+      },
+      setup = {
+        ltex = function(_, opts)
+          vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(args)
+              local client = vim.lsp.get_client_by_id(args.data.client_id)
+              if client.name == "ltex" then
+                require("ltex_extra").setup({
+                  load_langs = { "en-GB" }, -- languages for witch dictionaries will be loaded
+                  init_check = true, -- whether to load dictionaries on startup
+                  path = vim.fn.stdpath("data") .. "/spell", -- path to store dictionaries.
+                })
+              end
+            end,
+          })
+        end,
       },
     },
   },
@@ -135,5 +155,26 @@ return {
       tools = { inlay_hints = { auto = false } },
     },
   },
-  { "lervag/vimtex" },
+  {
+    "lervag/vimtex",
+    config = function()
+      vim.g.vimtex_mappings_enabled = 0
+    end,
+  },
+  {
+    "barreiroleo/ltex_extra.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+    -- opts = {
+    --   load_langs = { "en-GB" },
+    --   path = vim.fn.stdpath("data") .. "/dictionary",
+    -- },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
 }

@@ -3,7 +3,6 @@
   "workbench.reduceMotion": "on",
   "workbench.commandPalette.preserveInput": true,
   "files.autoSave": "afterDelay",
-  "files.autoSaveDelay": 10,
   // Theme
   "workbench.colorTheme": "Catppuccin Mocha",
   "catppuccin.italicComments": false,
@@ -23,7 +22,6 @@
   "editor.minimap.autohide": true,
   "editor.inlayHints.padding": true,
   "editor.acceptSuggestionOnEnter": "smart",
-  "editor.bracketPairColorization.independentColorPoolPerBracketType": false,
   "editor.formatOnSave": false,
   "editor.suggest.preview": true,
   "errorLens.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
@@ -160,7 +158,8 @@
     }
   ],
   "[python]": {
-    "editor.formatOnType": false
+    "editor.formatOnType": false,
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -198,5 +197,14 @@
   "rust-analyzer.check.command": "clippy",
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "terminal.integrated.persistentSessionScrollback": 10000,
+  "terminal.integrated.scrollback": 10000
 }
