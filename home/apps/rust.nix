@@ -3,6 +3,8 @@
     rustup
     sccache
     mdbook
+    cargo-watch
+    cargo-msrv
   ];
   home.sessionVariables = {
     RUSTC_WRAPPER = "sccache";
