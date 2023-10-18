@@ -3,13 +3,10 @@
   "workbench.reduceMotion": "on",
   "workbench.commandPalette.preserveInput": true,
   "files.autoSave": "afterDelay",
-  // Theme
-  "workbench.colorTheme": "Catppuccin Mocha",
   "catppuccin.italicComments": false,
   "catppuccin.italicKeywords": false,
   "catppuccin.accentColor": "pink",
   "window.titleBarStyle": "custom",
-  "workbench.iconTheme": "catppuccin-mocha",
   // Editor
   "editor.fontSize": 14,
   "editor.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
@@ -57,104 +54,240 @@
   "vim.useCtrlKeys": true,
   "vim.visualModeKeyBindings": [
     {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
     },
     {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     // Make sure to use VsCode's undo stack -> https://github.com/VSCodeVim/Vim/issues/1490
     {
-      "before": ["u"],
-      "commands": ["undo"]
+      "before": [
+        "u"
+      ],
+      "commands": [
+        "undo"
+      ]
     },
     {
-      "before": ["<C-r>"],
-      "commands": ["redo"]
+      "before": [
+        "<C-r>"
+      ],
+      "commands": [
+        "redo"
+      ]
     },
     // Helpful Stuff
     {
-      "before": ["/"],
-      "commands": ["actions.find"]
+      "before": [
+        "/"
+      ],
+      "commands": [
+        "actions.find"
+      ]
     },
     {
-      "before": ["<CR>"],
-      "after": ["o", "<ESC>"]
+      "before": [
+        "<CR>"
+      ],
+      "after": [
+        "o",
+        "<ESC>"
+      ]
     },
     {
-      "before": ["0"],
-      "after": ["^"]
+      "before": [
+        "0"
+      ],
+      "after": [
+        "^"
+      ]
     },
     {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "before": [
+        "<C-u>"
+      ],
+      "after": [
+        "<C-u>",
+        "z",
+        "z"
+      ]
     },
     {
-      "before": ["<leader>", "w"],
-      "commands": ["workbench.action.files.save"]
+      "before": [
+        "<C-d>"
+      ],
+      "after": [
+        "<C-d>",
+        "z",
+        "z"
+      ]
     },
     {
-      "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
     },
     {
-      "before": ["[", "c"],
-      "commands": ["workbench.action.editor.previousChange"]
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
     },
     {
-      "before": ["]", "c"],
-      "commands": ["workbench.action.editor.nextChange"]
+      "before": [
+        "<leader>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
+      "before": [
+        "[",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.previousChange"
+      ]
     },
     {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
+      "before": [
+        "]",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ]
     },
     {
-      "before": ["<leader>", "a"],
-      "commands": ["workbench.action.showCommands"]
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "a"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
     },
     // EasyMotion
     {
-      "before": ["s"],
-      "after": ["<leader>", "<leader>"]
+      "before": [
+        "s"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>"
+      ]
     },
     // Git
     {
-      "before": ["<leader>", "g", "g"],
-      "commands": ["workbench.view.scm"]
+      "before": [
+        "<leader>",
+        "g",
+        "g"
+      ],
+      "commands": [
+        "workbench.view.scm"
+      ]
     },
     {
-      "before": ["<leader>", "g", "h"],
-      "commands": ["toggle.diff.renderSideBySide"]
+      "before": [
+        "<leader>",
+        "g",
+        "h"
+      ],
+      "commands": [
+        "toggle.diff.renderSideBySide"
+      ]
     },
     {
-      "before": ["<leader>", "g", "p"],
-      "commands": ["git.openChange"]
+      "before": [
+        "<leader>",
+        "g",
+        "p"
+      ],
+      "commands": [
+        "git.openChange"
+      ]
     },
     // LSP
     {
-      "before": ["<space>", "l", "f"],
-      "commands": ["editor.action.formatDocument"]
+      "before": [
+        "<leader>",
+        "l",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
     },
     {
-      "before": ["<space>", "l", "r"],
-      "commands": ["editor.action.rename"]
+      "before": [
+        "<leader>",
+        "l",
+        "r"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
     },
     {
-      "before": ["<space>", "<space>"],
-      "commands": ["editor.action.quickFix"]
+      "before": [
+        "<leader>",
+        "l",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
     },
     // Tabs
     {
-      "before": ["<space>", "o"],
-      "commands": ["workbench.action.closeOtherEditors"]
+      "before": [
+        "<leader>",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
     }
   ],
   "[python]": {
@@ -206,5 +339,12 @@
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "terminal.integrated.persistentSessionScrollback": 10000,
-  "terminal.integrated.scrollback": 10000
+  "terminal.integrated.scrollback": 10000,
+  "terminal.external.linuxExec": "WezTerm",
+  "editor.wordWrap": "on",
+  "window.zoomLevel": 1,
+  "files.autoSaveDelay": 100,
+  "terminal.integrated.smoothScrolling": true,
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.colorTheme": "Catppuccin Mocha"
 }
