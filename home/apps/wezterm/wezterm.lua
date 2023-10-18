@@ -15,7 +15,7 @@ c.font = wezterm.font_with_fallback({
   "Symbols Nerd Font",
   "Builtin",
 })
-c.font_size = 12
+c.font_size = 15
 
 c.default_prog = { "fish", "-l" }
 
