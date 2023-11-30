@@ -4,6 +4,7 @@ return {
     name = "catppuccin",
     no_italic = true,
     opts = {
+      flavour = "latte",
       -- styles = {
       --   comments = { "italic" },
       -- },

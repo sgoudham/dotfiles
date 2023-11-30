@@ -19,17 +19,18 @@ in {
       };
     in {
       enable = true;
-      config.theme = "Catppuccin-mocha";
+      config.theme = "Catppuccin-latte";
       themes = let
-        getTheme = flavour:
-          builtins.readFile (
-            themepkg + "/Catppuccin-${flavour}.tmTheme"
-          );
+        getTheme = flavour: "Catppuccin-${flavour}.tmTheme";
       in {
-        Catppuccin-latte = getTheme "latte";
-        Catppuccin-frappe = getTheme "frappe";
-        Catppuccin-macchiato = getTheme "macchiato";
-        Catppuccin-mocha = getTheme "mocha";
+        Catppuccin-latte = {
+          src = themepkg;
+          file = getTheme "latte";
+        };
+        Catppuccin-mocha = {
+          src = themepkg;
+          file = getTheme "mocha";
+        };
       };
     };
     btop = {
@@ -39,13 +40,26 @@ in {
         vim_keys = true;
       };
     };
-    lsd = {
-      enable = true;
-      enableAliases = true;
-      settings = {
-        no-symlink = false;
-      };
-    };
+    # eza = {
+    #   enable = false;
+    #   enableAliases = false;
+    #   icons = true;
+    #   extraOptions = [
+    #     "--all"
+    #     "--long"
+    #     "--time-style=long-iso"
+    #     "--dereference"
+    #     "--octal-permissions"
+    #     "--group"
+    #   ];
+    # };
+    # lsd = {
+    #   enable = true;
+    #   enableAliases = true;
+    #   settings = {
+    #     no-symlink = false;
+    #   };
+    # };
     tealdeer = {
       enable = true;
       settings = {
@@ -296,7 +310,7 @@ in {
 
         bind -s --user -M insert \e "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f repaint-mode; end"
 
-        yes | fish_config theme save "Catppuccin Mocha"
+        yes | fish_config theme save "Catppuccin Latte"
       '';
 
       plugins = [
@@ -320,6 +334,10 @@ in {
     "fish/themes/Catppuccin Mocha.theme".text = builtins.readFile (pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Mocha.theme";
       sha256 = "sha256-MlI9Bg4z6uGWnuKQcZoSxPEsat9vfi5O1NkeYFaEb2I=";
+    });
+    "fish/themes/Catppuccin Latte.theme".text = builtins.readFile (pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Latte.theme";
+      sha256 = "sha256-SL19zcXf+Df1BeH+nfI63t3qpDmRISHGRtaEP36mojE=";
     });
   };
 }

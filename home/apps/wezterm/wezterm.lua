@@ -63,7 +63,7 @@ c.ssh_domains = {
 }
 
 wezterm.plugin.require("https://github.com/catppuccin/wezterm").apply_to_config(c, {
-  flavor = "mocha",
+  flavor = "latte",
   sync = wezterm.target_triple:find("darwin") ~= nil,
   sync_flavors = { light = "latte", dark = "mocha" },
 })
@@ -90,7 +90,7 @@ wezterm.plugin.require("https://github.com/sgoudham/wezterm-bar").apply_to_confi
   },
 })
 
-local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
+local custom = wezterm.color.get_builtin_schemes()["Catppuccin Latte"]
 custom.background = "#000000"
 custom.tab_bar.background = "#040404"
 custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
@@ -99,6 +99,6 @@ custom.tab_bar.new_tab.bg_color = "#080808"
 c.color_schemes = {
   ["OLEDppuccin"] = custom,
 }
-c.color_scheme = "Catppuccin Mocha"
+c.color_scheme = "Catppuccin Latte"
 
 return c

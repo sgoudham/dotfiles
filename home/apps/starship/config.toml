@@ -1,6 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+palette = "catppuccin_latte"
 format = """
 ┌ \
 $username\
@@ -84,121 +85,177 @@ error_symbol = "[\\$](bold red)"     # The "success_symbol" segment is being set
 vimcmd_symbol = "[\\$](bold green)"
 
 [hostname]
-style = "#74c7ec"
+style = "sapphire"
 ssh_symbol = "🐴 "
 
 [aws]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "  "
 
 [buf]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [c]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [conda]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [dart]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [directory]
-style = "#cba6f7"
+style = "mauve"
 read_only = " 󰌾"
 
 [docker_context]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [elixir]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [elm]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [git_branch]
 symbol = " "
 
 [golang]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [haskell]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󰲒 "
 
 [hg_branch]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [java]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󰬷 "
 
 [julia]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [lua]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [memory_usage]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󰍛 "
 
 [meson]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󰔷 "
 
 [nim]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󰆥 "
 
 [nix_shell]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [nodejs]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [package]
-style = "#fab387"
+style = "peach"
 symbol = ' '
 
 [python]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [rlang]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󰟔 "
 
 [ruby]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [rust]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󱘗 "
 
 [scala]
-style = "#74c7ec"
+style = "sapphire"
 symbol = " "
 
 [spack]
-style = "#74c7ec"
+style = "sapphire"
 
 [kubernetes]
-style = "#74c7ec"
+style = "sapphire"
 symbol = "󱃾 "
 format = '[ $symbol($cluster/$namespace) ]($style)'
 disabled = false
+
+[palettes.catppuccin_latte]
+rosewater = "#dc8a78"
+flamingo = "#dd7878"
+pink = "#ea76cb"
+mauve = "#8839ef"
+red = "#d20f39"
+maroon = "#e64553"
+peach = "#fe640b"
+yellow = "#df8e1d"
+green = "#40a02b"
+teal = "#179299"
+sky = "#04a5e5"
+sapphire = "#209fb5"
+blue = "#1e66f5"
+lavender = "#7287fd"
+text = "#4c4f69"
+subtext1 = "#5c5f77"
+subtext0 = "#6c6f85"
+overlay2 = "#7c7f93"
+overlay1 = "#8c8fa1"
+overlay0 = "#9ca0b0"
+surface2 = "#acb0be"
+surface1 = "#bcc0cc"
+surface0 = "#ccd0da"
+base = "#eff1f5"
+mantle = "#e6e9ef"
+crust = "#dce0e8"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
