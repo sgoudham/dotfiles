@@ -74,10 +74,6 @@ set tm=500
 " Set scrolloff
 set scrolloff=8
 
-"" Mappings
-" 0 -> first non-blank character
-map 0 ^
-
 " Center buffer when navigating
 nmap <C-u> <C-u>zz
 nmap <C-d> <C-d>zz
