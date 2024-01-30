@@ -26,6 +26,7 @@ unmap("n", "<leader>ww")
 unmap("n", "<leader>w-")
 unmap("n", "<leader>w|")
 unmap("n", "<leader>wd")
+unmap("n", "<leader>bb")
 require("which-key").register({
   ["<leader>w"] = "which_key_ignore",
 })
