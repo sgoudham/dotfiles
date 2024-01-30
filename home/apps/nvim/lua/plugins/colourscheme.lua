@@ -3,15 +3,13 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     no_italic = true,
+    priority = 10000,
     opts = {
       flavour = "latte",
       -- styles = {
       --   comments = { "italic" },
       -- },
       integrations = {
-        navic = {
-          custom_bg = "#181825",
-        },
         telescope = {
           style = "nvchad",
         },
