@@ -1,4 +1,4 @@
-local wezterm = require("wezterm") 
+local wezterm = require("wezterm")
 local act = wezterm.action
 
 return {
@@ -34,6 +34,20 @@ return {
     { key = "n", mods = "ALT|SHIFT", action = act({ SpawnTab = "CurrentPaneDomain" }) },
     { key = "m", mods = "ALT|SHIFT", action = act({ SpawnTab = "DefaultDomain" }) },
 
+    -- Interactively Rename Tab
+    {
+      key = "E",
+      mods = "ALT|SHIFT",
+      action = act.PromptInputLine({
+        description = "New Tab Name",
+        action = wezterm.action_callback(function(window, _, line)
+          if line then
+            window:active_tab():set_title(line)
+          end
+        end),
+      }),
+    },
+
     -- Open Links Via Keyboard
     {
       key = "o",
@@ -60,5 +74,5 @@ return {
       mods = "CTRL",
       action = act.OpenLinkAtMouseCursor,
     },
-  }
+  },
 }
