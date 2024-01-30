@@ -89,7 +89,7 @@ return {
     opts = {
       -- TODO: Add in keymaps for <M-hjkl> for toggleterm
       open_mapping = [[<C-/]],
-      direction = "vertical",
+      direction = "float",
       size = vim.o.columns * 0.5,
       shade_filetypes = {},
       autochdir = true,
@@ -111,8 +111,31 @@ return {
     end,
   },
   {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = "nvim-lua/plenary.nvim",
+    keys = function()
+      local harpoon = require("harpoon")
+      harpoon:setup()
+      -- stylua: ignore
+      return {
+        { "<leader>bm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Open Harpoon Menu", },
+        { "<leader>bb", function() harpoon:list():append() end, desc = "Add To Harpoon", },
+        { "<leader>1", function() harpoon:list():select(1) end },
+        { "<leader>2", function() harpoon:list():select(2) end },
+        { "<leader>3", function() harpoon:list():select(3) end },
+        { "<leader>4", function() harpoon:list():select(4) end },
+      }
+    end,
+  },
+  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    opts = {}, -- this is equalent to setup({}) function
+    opts = {}, -- this is equivalent to setup({}) function
+  },
+  {
+    "NoahTheDuke/vim-just",
+    event = { "BufReadPre", "BufNewFile" },
+    ft = { "\\cjustfile", "*.just", ".justfile" },
   },
 }

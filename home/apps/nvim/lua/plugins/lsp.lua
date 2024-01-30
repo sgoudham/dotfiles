@@ -38,7 +38,7 @@ return {
       keys[#keys + 1] = { "gl", vim.diagnostic.open_float, "Line Diagnostics" }
     end,
     opts = {
-      diagnostics = { underline = false },
+      diagnostics = { underline = false, update_in_insert = true },
       inlay_hints = { enabled = true },
       autoformat = false,
       ---@type lspconfig.options
@@ -79,6 +79,7 @@ return {
           "ltex-ls",
           "marksman",
           "yaml-language-server",
+          "elixir-ls",
           -- linter
           "yamllint",
           "jsonlint",
@@ -107,8 +108,8 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<M-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<M-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-n>"] = cmp.mapping.scroll_docs(4),
+        ["<M-p>"] = cmp.mapping.scroll_docs(-4),
+        ["<M-n>"] = cmp.mapping.scroll_docs(4),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
