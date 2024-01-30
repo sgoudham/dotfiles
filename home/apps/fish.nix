@@ -73,21 +73,24 @@ in {
         updates.auto_update = true;
       };
     };
+    zoxide = {
+      enable = true;
+    };
     fzf = {
       enable = true;
       colors = {
-        "bg+" = "#040404";
-        "fg+" = "#cdd6f4";
-        "hl+" = "#f38ba8";
-        border = "#74c7ec";
-        fg = "#cdd6f4";
-        header = "#f38ba8";
-        hl = "#f38ba8";
-        info = "#cba6f7";
-        marker = "#f5e0dc";
-        pointer = "#f5e0dc";
-        prompt = "#cba6f7";
-        spinner = "#f5e0dc";
+        "bg+" = "#e6e9ef";
+        "fg+" = "#4c4f69";
+        "hl+" = "#d20f39";
+        border = "#04a5e5";
+        fg = "#4c4f69";
+        header = "#d20f39";
+        hl = "#d20f39";
+        info = "#8839ef";
+        marker = "#dc8a78";
+        pointer = "#dc8a78";
+        prompt = "#8839ef";
+        spinner = "#dc8a78";
       };
       defaultOptions = [
         "--height 40%"
