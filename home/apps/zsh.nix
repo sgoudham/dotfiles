@@ -4,7 +4,7 @@
   ...
 }: {
   programs.zsh = {
-    enable = true;
+    enable = false;
     enableAutosuggestions = true;
     enableCompletion = true;
     # Idk why the highlighting doesn't work properly now
