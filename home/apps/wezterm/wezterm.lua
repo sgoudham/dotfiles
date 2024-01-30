@@ -6,6 +6,7 @@ c.set_environment_variables = {
 }
 
 c.front_end = "OpenGL"
+c.check_for_updates = false
 c.term = "wezterm"
 c.font = wezterm.font_with_fallback({
   {
@@ -15,7 +16,7 @@ c.font = wezterm.font_with_fallback({
   "Symbols Nerd Font",
   "Builtin",
 })
-c.font_size = 15
+c.font_size = 18
 
 c.default_prog = { "fish", "-l" }
 
