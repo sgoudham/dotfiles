@@ -14,6 +14,7 @@
 
     git-view.url = "github:sgoudham/git-view/v1.0.0";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    catppuccin-toolbox.url = "github:catppuccin/toolbox";
   };
 
   nixConfig = {
@@ -38,12 +39,14 @@
     nix-index-database,
     neovim-nightly-overlay,
     git-view,
+    catppuccin-toolbox,
     ...
   }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
     overlays = final: prev: {
       git-view = git-view.packages.${system}.default;
+      whiskers = catppuccin-toolbox.packages.${pkgs.system}.whiskers;
       nur = import nur {
         nurpkgs = prev;
         pkgs = prev;
