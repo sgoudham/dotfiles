@@ -21,8 +21,8 @@
   "editor.acceptSuggestionOnEnter": "smart",
   "editor.formatOnSave": false,
   "editor.suggest.preview": true,
-  "errorLens.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
-  "errorLens.fontWeight": "bold",
+  // Latex
+  "latex-workshop.latex.autoBuild.run": "onSave",
   // Terminal
   "terminal.integrated.defaultProfile.linux": "fish",
   "terminal.integrated.fontSize": 14,
@@ -306,7 +306,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "explorer.confirmDragAndDrop": false,
   "[jsonc]": {
@@ -332,7 +332,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -345,6 +345,10 @@
   "window.zoomLevel": 1,
   "files.autoSaveDelay": 100,
   "terminal.integrated.smoothScrolling": true,
-  "workbench.iconTheme": "catppuccin-mocha",
-  "workbench.colorTheme": "Catppuccin Mocha"
+  "explorer.confirmDelete": false,
+  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.colorTheme": "Catppuccin Latte",
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
