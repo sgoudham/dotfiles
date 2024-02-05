@@ -1,12 +1,33 @@
 return {
+  { -- do not lazyload
+    -- and don't use default section operators!
+    "nvim-lualine/lualine.nvim",
+    lazy = false,
+    event = function()
+      return {}
+    end,
+    opts = function(_, opts)
+      opts.options.section_separators = ""
+    end,
+  },
   {
     "LazyVim/LazyVim",
+    init = function()
+      -- "I" keeps the startup message, which I've grown to like over time
+      vim.opt.shortmess:append({ W = true, I = false, c = true, C = true })
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
     opts = {
-      colorscheme = "catppuccin",
+      formatters_by_ft = {
+        markdown = { "mdformat" },
+      },
     },
   },
   {
     "folke/noice.nvim",
+    lazy = false,
     opts = function(_, opts)
       table.insert(opts.routes, {
         filter = {
@@ -27,51 +48,8 @@ return {
         },
         opts = { skip = true },
       })
-      opts.presets.lsp_doc_border = false
+      opts.presets.lsp_doc_border = true
     end,
-  },
-  {
-    "folke/persistence.nvim",
-    keys = function()
-      -- stylua: ignore
-      return {
-        { "<leader>as", function() require("persistence").load() end, desc = "Restore Session", },
-        { "<leader>al", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session", },
-        { "<leader>ad", function() require("persistence").stop() end, desc = "Don't Save Current Session", },
-      }
-    end,
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      enable_normal_mode_for_inputs = true,
-      window = { mappings = { ["o"] = "open" } },
-    },
-  },
-  {
-    "NeogitOrg/neogit",
-    dependencies = "nvim-lua/plenary.nvim",
-    opts = {
-      disable_commit_confirmation = true,
-    },
-    keys = {
-      { "<leader>gg", "<cmd>Neogit kind=replace<cr>", desc = "Open Neogit" },
-      { "<leader>gG", "<cmd>Neogit cwd=%:p:h<cr>", desc = "Open Neogit (cwd)" },
-    },
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    opts = {
-      detection_methods = { "pattern" },
-    },
-    event = "VeryLazy",
-    config = function(_, opts)
-      require("project_nvim").setup(opts)
-      require("telescope").load_extension("projects")
-    end,
-    keys = {
-      { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
-    },
   },
   {
     "stevearc/dressing.nvim",
@@ -99,43 +77,5 @@ return {
       start_in_insert = true,
       shell = "fish",
     },
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = vim.list_extend(opts.sources, {
-        nls.builtins.formatting.black,
-        -- nls.builtins.diagnostics.ruff,
-      })
-    end,
-  },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = "nvim-lua/plenary.nvim",
-    keys = function()
-      local harpoon = require("harpoon")
-      harpoon:setup()
-      -- stylua: ignore
-      return {
-        { "<leader>bm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Open Harpoon Menu", },
-        { "<leader>bb", function() harpoon:list():append() end, desc = "Add To Harpoon", },
-        { "<leader>1", function() harpoon:list():select(1) end },
-        { "<leader>2", function() harpoon:list():select(2) end },
-        { "<leader>3", function() harpoon:list():select(3) end },
-        { "<leader>4", function() harpoon:list():select(4) end },
-      }
-    end,
-  },
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {}, -- this is equivalent to setup({}) function
-  },
-  {
-    "NoahTheDuke/vim-just",
-    event = { "BufReadPre", "BufNewFile" },
-    ft = { "\\cjustfile", "*.just", ".justfile" },
   },
 }

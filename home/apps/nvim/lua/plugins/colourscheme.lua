@@ -2,31 +2,32 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    no_italic = true,
     priority = 10000,
     opts = {
       flavour = "latte",
-      -- styles = {
-      --   comments = { "italic" },
-      -- },
-      integrations = {
-        telescope = {
-          style = "nvchad",
-        },
-      },
       custom_highlights = function(c)
         local u = require("catppuccin.utils.colors")
 
         return {
-          -- ["@parameter"] = { style = {} },
-          -- Parameter = { style = {} },
-          -- ["@conditional"] = { style = {} },
-          -- Conditional = { style = {} },
-          -- ["@namespace"] = { style = {} },
-          MiniIndentscopeSymbol = { fg = c.pink },
           NoiceCmdLinePopupTitle = { fg = c.base, bg = c.blue },
-          NoiceCmdlinePopup = { bg = c.mantle },
-          NoiceCmdlinePopupBorder = { bg = c.mantle, fg = c.mantle },
+          NoiceCmdlinePopup = { bg = c.base },
+          NoiceCmdlinePopupBorder = { fg = c.blue },
+
+          -- Making the background of mini.files lighter
+          MiniFilesNormal = { bg = c.base },
+          -- Make the indentline nicer on the eyes
+          MiniIndentscopeSymbol = { fg = c.pink },
+
+          -- Setting the borders and background of the completion/documentation menu
+          BorderBG = { fg = c.blue },
+          PmenuSel = { bg = c.mantle },
+          -- Setting the background of the lsp.buf.hover() and other floats
+          NormalFloat = { bg = c.base },
+          -- Setting the background of the lsp diagnostics - stuff like [d, [w
+          TroubleNormal = { bg = c.base },
+
+          -- Markdown headlines
+          Headline1 = { bg = c.transparent },
 
           -- Neogit
           -- NeogitUnstagedchanges = { bg = c.base },
