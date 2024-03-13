@@ -148,6 +148,7 @@ in {
         gra = "git rebase --abort";
         grc = "git rebase --continue";
         gs = "git switch";
+        gsc = "git switch --create";
         gst = "git status";
 
         # Rust
@@ -329,7 +330,7 @@ in {
 
         bind -s --user -M insert \e "if commandline -P; commandline -f cancel; else; set fish_bind_mode default; commandline -f repaint-mode; end"
 
-        yes | fish_config theme save "Catppuccin Latte"
+        yes | fish_config theme save "Catppuccin Mocha"
       '';
 
       plugins = [
