@@ -14,22 +14,22 @@ in {
       themepkg = pkgs.fetchFromGitHub {
         owner = "catppuccin";
         repo = "bat";
-        rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-        sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
+        rev = "main";
+        sha256 = "sha256-PWX8LR3xTgNBUpk+xBIGpEBQCNJHre8cRX4OTSWkZvs=";
       };
     in {
       enable = true;
-      config.theme = "Catppuccin-latte";
+      config.theme = "Catppuccin Mocha";
       themes = let
-        getTheme = flavour: "Catppuccin-${flavour}.tmTheme";
+        getTheme = flavour: "/themes/Catppuccin ${flavour}.tmTheme";
       in {
-        Catppuccin-latte = {
+        "Catppuccin Latte" = {
           src = themepkg;
-          file = getTheme "latte";
+          file = getTheme "Latte";
         };
-        Catppuccin-mocha = {
+        "Catppuccin Mocha" = {
           src = themepkg;
-          file = getTheme "mocha";
+          file = getTheme "Mocha";
         };
       };
     };
