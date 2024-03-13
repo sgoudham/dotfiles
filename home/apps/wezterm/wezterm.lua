@@ -100,6 +100,6 @@ custom.tab_bar.new_tab.bg_color = "#080808"
 c.color_schemes = {
   ["OLEDppuccin"] = custom,
 }
-c.color_scheme = "Catppuccin Latte"
+c.color_scheme = "Catppuccin Mocha"
 
 return c

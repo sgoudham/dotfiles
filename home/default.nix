@@ -43,7 +43,7 @@
   home.sessionVariables = {
     TERMINAL = "wezterm-gui";
     LIBVA_DRIVER_NAME = "iHD";
-    LS_COLORS = "$(vivid generate catppuccin-latte)";
+    LS_COLORS = "$(vivid generate catppuccin-mocha)";
     JAVA_HOME = "${config.home.homeDirectory}/.sdkman/candidates/java/current";
     GRAALVM_HOME = "${config.home.homeDirectory}/.sdkman/candidates/java/22.3.r17-grl";
   };
@@ -53,6 +53,8 @@
   ];
   home.shellAliases = {
     magit = "nvim '+Neogit kind=replace'";
+    cat = "bat";
+    mv = "mv -iv";
   };
 
   xdg.configFile."ideavim/ideavimrc".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/ideavim/ideavimrc";
