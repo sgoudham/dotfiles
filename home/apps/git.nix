@@ -35,12 +35,22 @@
       "node_modules/"
     ];
     extraConfig = {
-      push.autoSetupRemote = true;
+      branch.sort = "-committerdate";
       core = {
         autocrlf = "input";
         editor = "nvim";
       };
+      commit.verbose = true;
+      fetch = {
+        fsckobjects = true;
+        prune = true;
+        prunetags = true;
+      };
       init.defaultBranch = "main";
+      merge.conflictstyle = "zdiff3";
+      push.autoSetupRemote = true;
+      receive.fsckObjects = true;
+      transfer.fsckobjects = true;
     };
   };
 }
