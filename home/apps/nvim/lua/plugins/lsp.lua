@@ -25,6 +25,8 @@ return {
     },
     ---@class PluginLspOpts
     init = function()
+      require("lspconfig.ui.windows").default_options.border = "rounded"
+
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       local function swap_prefix(before, after)
         for _, keymap in ipairs(keys) do
@@ -70,9 +72,6 @@ return {
         end,
       },
     },
-    config = function()
-      require("lspconfig.ui.windows").default_options.border = "rounded"
-    end,
   },
   {
     "williamboman/mason.nvim",

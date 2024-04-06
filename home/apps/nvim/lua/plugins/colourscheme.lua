@@ -4,9 +4,10 @@ return {
     name = "catppuccin",
     priority = 10000,
     opts = {
-      flavour = "latte",
+      flavour = "mocha",
       custom_highlights = function(c)
         local u = require("catppuccin.utils.colors")
+        local latte = require("catppuccin.palettes.latte")
 
         return {
           NoiceCmdLinePopupTitle = { fg = c.base, bg = c.blue },
@@ -20,7 +21,7 @@ return {
 
           -- Setting the borders and background of the completion/documentation menu
           BorderBG = { fg = c.blue },
-          PmenuSel = { bg = c.mantle },
+          -- PmenuSel = { bg = c.mantle }, -- enable when using latte
           -- Setting the background of the lsp.buf.hover() and other floats
           NormalFloat = { bg = c.base },
           -- Setting the background of the lsp diagnostics - stuff like [d, [w
@@ -28,6 +29,9 @@ return {
 
           -- Markdown headlines
           Headline1 = { bg = c.transparent },
+
+          EyelinerPrimary = { fg = latte.red },
+          EyelinerSecondary = { fg = latte.peach },
 
           -- Neogit
           -- NeogitUnstagedchanges = { bg = c.base },

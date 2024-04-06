@@ -35,6 +35,7 @@ return {
             { event = "notify", find = "No information available" },
             { event = "msg_show", find = "fewer lines" },
             { event = "msg_show", find = "more lines" },
+            { event = "notify", find = "Compilation completed" },
             {
               event = "lsp",
               kind = "progress",
@@ -77,5 +78,13 @@ return {
       start_in_insert = true,
       shell = "fish",
     },
+  },
+  {
+    "jinh0/eyeliner.nvim",
+    config = function()
+      require("eyeliner").setup({
+        highlight_on_key = true,
+      })
+    end,
   },
 }

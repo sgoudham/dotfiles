@@ -2,6 +2,7 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = "nvim-lua/plenary.nvim",
+    cmd = { "Neogit" },
     opts = {
       disable_commit_confirmation = true,
     },

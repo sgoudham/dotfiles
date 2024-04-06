@@ -26,6 +26,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.tex" },
     { import = "lazyvim.plugins.extras.dap.core" },
     -- Can't figure out how to force reordering of the completions so just gonna disable it for now
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
