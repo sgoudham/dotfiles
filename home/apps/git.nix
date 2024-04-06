@@ -51,6 +51,7 @@
       push.autoSetupRemote = true;
       receive.fsckObjects = true;
       transfer.fsckobjects = true;
+      url."git@github.com:catppuccin/".insteadOf = "ctp:";
     };
   };
 }
