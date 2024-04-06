@@ -346,8 +346,8 @@
   "files.autoSaveDelay": 100,
   "terminal.integrated.smoothScrolling": true,
   "explorer.confirmDelete": false,
-  "workbench.iconTheme": "catppuccin-mocha",
-  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-latte",
+  "workbench.colorTheme": "Catppuccin Latte",
   "[mdx]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
