@@ -48,6 +48,9 @@ map({ "n", "v" }, "<leader>lf", function()
   Util.format({ force = true })
 end, { desc = "Format" })
 
+-- Easy repeat of last macro
+map({ "n" }, "Q", '@@', { desc = "Repeat last macro" })
+
 -- Copy/paste with system clipboard
 map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
 map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
