@@ -353,11 +353,11 @@ in {
     "fish/functions" = symlink "home/apps/fish/functions" {recursive = true;};
     "fish/themes/Catppuccin Mocha.theme".text = builtins.readFile (pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Mocha.theme";
-      sha256 = "sha256-MlI9Bg4z6uGWnuKQcZoSxPEsat9vfi5O1NkeYFaEb2I=";
+      sha256 = "sha256-kdA9Vh23nz9FW2rfOys9JVmj9rtr7n8lZUPK8cf7pGE=";
     });
     "fish/themes/Catppuccin Latte.theme".text = builtins.readFile (pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Latte.theme";
-      sha256 = "sha256-SL19zcXf+Df1BeH+nfI63t3qpDmRISHGRtaEP36mojE=";
+      sha256 = "sha256-JV/IP87u11NgLtfsXaNciewCDDqWtFArHlixLOG0l7E=";
     });
   };
 }
