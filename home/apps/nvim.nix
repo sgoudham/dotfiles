@@ -16,13 +16,6 @@ in {
     defaultEditor = true;
     withNodeJs = true;
 
-    package = pkgs.symlinkJoin {
-      name = "neovim";
-      paths = [pkgs.neovim-nightly];
-      buildInputs = [pkgs.makeWrapper pkgs.gcc];
-      postBuild = "wrapProgram $out/bin/nvim --prefix CC : ${pkgs.lib.getExe pkgs.gcc}";
-    };
-
     extraPackages = with pkgs; [
       tree-sitter
       lazygit

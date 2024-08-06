@@ -13,7 +13,6 @@
     nekowinston-nur.url = "github:nekowinston/nur";
 
     git-view.url = "github:sgoudham/git-view/v1.0.0";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     catppuccin-whiskers.url = "github:catppuccin/whiskers";
   };
 
@@ -38,7 +37,6 @@
     nekowinston-nur,
     home-manager,
     nix-index-database,
-    neovim-nightly-overlay,
     git-view,
     catppuccin-whiskers,
     ...
@@ -68,7 +66,6 @@
         ({config, ...}: {
           config = {
             nixpkgs.overlays = [
-              neovim-nightly-overlay.overlay
               overlays
             ];
           };
