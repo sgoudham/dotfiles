@@ -88,10 +88,11 @@ in {
         header = "#f38ba8";
         hl = "#f38ba8";
         info = "#cba6f7";
-        marker = "#f5e0dc";
+        marker = "#b4befe";
         pointer = "#f5e0dc";
         prompt = "#cba6f7";
         spinner = "#f5e0dc";
+        selected-bg = "#45475a";
       };
       # Latte
       # colors = {
@@ -111,6 +112,8 @@ in {
       defaultOptions = [
         "--height 40%"
         "--reverse"
+        "--multi"
+        "--prompt '▌ '"
       ];
     };
 
