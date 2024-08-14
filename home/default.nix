@@ -38,6 +38,7 @@
     git-view
     nur.repos.nekowinston.icat
     whiskers
+    catwalk
     just
   ];
   home.sessionVariables = {

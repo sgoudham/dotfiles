@@ -14,6 +14,7 @@
 
     git-view.url = "github:sgoudham/git-view/v1.0.0";
     catppuccin-whiskers.url = "github:catppuccin/whiskers";
+    catppuccin-catwalk.url = "github:catppuccin/catwalk";
   };
 
   nixConfig = {
@@ -39,6 +40,7 @@
     nix-index-database,
     git-view,
     catppuccin-whiskers,
+    catppuccin-catwalk,
     ...
   }: let
     system = "x86_64-linux";
@@ -46,6 +48,7 @@
     overlays = final: prev: {
       git-view = git-view.packages.${system}.default;
       whiskers = catppuccin-whiskers.packages.${pkgs.system}.default;
+      catwalk = catppuccin-catwalk.packages.${pkgs.system}.default;
       nur = import nur {
         nurpkgs = prev;
         pkgs = prev;
