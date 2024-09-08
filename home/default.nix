@@ -3,7 +3,8 @@
   pkgs,
   flakePath,
   ...
-}: {
+}:
+{
   imports = [
     ./apps/wezterm.nix
     # ./apps/zsh.nix
@@ -64,7 +65,7 @@
     "Code/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/vscode/settings.json";
   };
 
-  xdg.mime.enable = true;
+  xdg.mime.enable = false;
   # turn off if on nixos (you have bigger problems than that if you get to this point)
   targets.genericLinux.enable = true;
 }
