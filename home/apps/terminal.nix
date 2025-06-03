@@ -12,7 +12,7 @@
     settings = {
       font-size = 18;
       font-family = "Iosevka Term";
-      command = "~/.nix-profile/bin/fish --login --interactive";
+      command = "${lib.getExe config.programs.fish.package} --login --interactive";
       window-decoration = "none";
       linux-cgroup = "always";
       maximize = true;
