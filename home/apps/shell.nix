@@ -68,4 +68,10 @@
       }
     ];
   };
+
+  home.shellAliases = {
+    magit = "nvim '+Neogit kind=replace'";
+    cat = "bat";
+    mv = "mv -iv";
+  };
 }
