@@ -1,0 +1,205 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+palette = "catppuccin_mocha"
+format = """
+┌ \
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$kubernetes\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$time\
+$status\
+$container\
+$shell\
+└ \
+$character"""
+
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[\\$](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[\\$](bold red)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+vimcmd_symbol = "[\\$](bold green)"
+
+[hostname]
+style = "sapphire"
+ssh_symbol = "🐴 "
+
+[aws]
+style = "sapphire"
+symbol = "  "
+
+[buf]
+style = "sapphire"
+symbol = " "
+
+[c]
+style = "sapphire"
+symbol = " "
+
+[conda]
+style = "sapphire"
+symbol = " "
+
+[dart]
+style = "sapphire"
+symbol = " "
+
+[directory]
+style = "mauve"
+read_only = " 󰌾"
+
+[docker_context]
+style = "sapphire"
+symbol = " "
+
+[elixir]
+style = "sapphire"
+symbol = " "
+
+[elm]
+style = "sapphire"
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+style = "sapphire"
+symbol = " "
+
+[haskell]
+style = "sapphire"
+symbol = "󰲒 "
+
+[hg_branch]
+style = "sapphire"
+symbol = " "
+
+[java]
+style = "sapphire"
+symbol = "󰬷 "
+
+[julia]
+style = "sapphire"
+symbol = " "
+
+[lua]
+style = "sapphire"
+symbol = " "
+
+[memory_usage]
+style = "sapphire"
+symbol = "󰍛 "
+
+[meson]
+style = "sapphire"
+symbol = "󰔷 "
+
+[nim]
+style = "sapphire"
+symbol = "󰆥 "
+
+[nix_shell]
+style = "sapphire"
+symbol = " "
+
+[nodejs]
+style = "sapphire"
+symbol = " "
+
+[package]
+style = "peach"
+symbol = ' '
+
+[python]
+style = "sapphire"
+symbol = " "
+
+[rlang]
+style = "sapphire"
+symbol = "󰟔 "
+
+[ruby]
+style = "sapphire"
+symbol = " "
+
+[rust]
+style = "sapphire"
+symbol = "󱘗 "
+
+[scala]
+style = "sapphire"
+symbol = " "
+
+[spack]
+style = "sapphire"
+
+[kubernetes]
+style = "sapphire"
+symbol = "󱃾 "
+format = '[ $symbol($cluster/$namespace) ]($style)'
+disabled = false
