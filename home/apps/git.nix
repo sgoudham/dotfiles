@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   home.file.".ssh/allowed_signers".text = ''
     sgoudham@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2kW8iK+a+msGY4ss5pU04Bye9yHhADNaXfNOVVy82A sgoudham@gmail.com
