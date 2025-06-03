@@ -84,6 +84,7 @@
 
   # Packages that are available inside of a terminal
   home.packages = with pkgs; [
+    gh
     ripgrep
     fd
   ];

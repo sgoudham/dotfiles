@@ -62,8 +62,4 @@
       url."git@github.com:".insteadOf = "gh:";
     };
   };
-
-  home.packages = with pkgs; [
-    gh
-  ];
 }
