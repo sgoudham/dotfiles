@@ -6,6 +6,7 @@
 
 {
   imports = [
+    ./apps/keymaps.nix
     ./apps/fonts.nix
     ./apps/shell.nix
     ./apps/git.nix
