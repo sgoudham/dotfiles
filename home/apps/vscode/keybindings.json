@@ -1,0 +1,23 @@
+[
+  // Terminal
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "alt+=",
+    "command": "workbench.action.terminal.focus",
+    "when": "vim.active && vim.mode != 'Insert'"
+  },
+  {
+    "key": "alt+=",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  // LSP
+  {
+    "key": "shift+k",
+    "command": "editor.action.showDefinitionPreviewHover",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  }
+]

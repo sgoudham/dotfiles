@@ -1,0 +1,286 @@
+{
+  "catppuccin.accentColor": "pink",
+  "catppuccin.italicComments": false,
+  "catppuccin.italicKeywords": false,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
+  "editor.fontSize": 16,
+  "editor.formatOnSave": false,
+  "editor.inlayHints.padding": true,
+  "editor.minimap.autohide": true,
+  "editor.mouseWheelZoom": true,
+  "editor.smoothScrolling": true,
+  "editor.suggest.preview": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.autoSave": "afterDelay",
+  "git.confirmSync": false,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "/home/goudham/.nix-profile/bin/nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "options": {
+        "home-manager": {
+          "expr": "(builtins.getFlake (builtins.toString ./.)).homeConfigurations.goudham.options"
+        }
+      }
+    }
+  },
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.fontSize": 18,
+  "vim.easymotion": true,
+  "vim.easymotionDimBackground": false,
+  "vim.handleKeys": {
+    "<C-a>": false, // select all
+    "<C-c>": false, // copy
+    "<C-f>": false, // find
+    "<C-v>": false, // paste
+    "<C-x>": false // cut
+  },
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Make sure to use VsCode's undo stack -> https://github.com/VSCodeVim/Vim/issues/1490
+    {
+      "before": [
+        "u"
+      ],
+      "commands": [
+        "undo"
+      ]
+    },
+    {
+      "before": [
+        "<C-r>"
+      ],
+      "commands": [
+        "redo"
+      ]
+    },
+    // Helpful Stuff
+    {
+      "before": [
+        "/"
+      ],
+      "commands": [
+        "actions.find"
+      ]
+    },
+    {
+      "after": [
+        "o",
+        "<ESC>"
+      ],
+      "before": [
+        "<CR>"
+      ]
+    },
+    {
+      "after": [
+        "^"
+      ],
+      "before": [
+        "0"
+      ]
+    },
+    {
+      "after": [
+        "<C-u>",
+        "z",
+        "z"
+      ],
+      "before": [
+        "<C-u>"
+      ]
+    },
+    {
+      "after": [
+        "<C-d>",
+        "z",
+        "z"
+      ],
+      "before": [
+        "<C-d>"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.files.save"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.previousChange"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.editor.nextChange"
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "a"
+      ],
+      "commands": [
+        "workbench.action.showCommands"
+      ]
+    },
+    // EasyMotion
+    {
+      "after": [
+        "<leader>",
+        "<leader>"
+      ],
+      "before": [
+        "s"
+      ]
+    },
+    // Git
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "g"
+      ],
+      "commands": [
+        "workbench.view.scm"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "h"
+      ],
+      "commands": [
+        "toggle.diff.renderSideBySide"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "p"
+      ],
+      "commands": [
+        "git.openChange"
+      ]
+    },
+    // LSP
+    {
+      "before": [
+        "<leader>",
+        "l",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l",
+        "r"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "l",
+        "a"
+      ],
+      "commands": [
+        "editor.action.quickFix"
+      ]
+    },
+    // Tabs
+    {
+      "before": [
+        "<leader>",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
+    }
+  ],
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": false,
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    }
+  ],
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha"
+}

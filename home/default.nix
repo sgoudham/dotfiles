@@ -1,6 +1,8 @@
 {
   inputs,
   pkgs,
+  config,
+  flakePath,
   ...
 }:
 
@@ -30,22 +32,6 @@
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.h ome.username}!"
-    # '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -63,26 +49,6 @@
     # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/goudham/etc/profile.d/hm-session-vars.sh
-  #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -91,14 +57,21 @@
   # Make sure that `nixpkgs#...` uses the same registry as the one defined in the flake.
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
 
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 3d";
+  };
 
   nixGL.packages = inputs.nixGL.packages;
   nixGL.vulkan.enable = false;
 
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 3d";
+  catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
+
+  xdg.configFile = {
+    "Code/User/settings.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/vscode/settings.json";
+    "Code/User/keybindings.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/apps/vscode/keybindings.json";
   };
 }
