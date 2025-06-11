@@ -59,6 +59,22 @@
         "redo"
       ]
     },
+    {
+      "before": [
+        "<C-o>"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
+    },
+    {
+      "before": [
+        "<C-i>"
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
+    },
     // Helpful Stuff
     {
       "before": [
