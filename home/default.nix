@@ -13,6 +13,7 @@
     ./apps/git.nix
     ./apps/terminal.nix
     ./apps/nvim.nix
+    ./apps/node.nix
   ];
 
   home.username = "goudham";
