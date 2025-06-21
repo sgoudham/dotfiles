@@ -22,6 +22,24 @@ in
     viAlias = true;
     defaultEditor = true;
     withNodeJs = true;
+
+    package = pkgs.symlinkJoin {
+      name = "neovim";
+      paths = [ pkgs.neovim-unwrapped ];
+      buildInputs = [
+        pkgs.makeWrapper
+        pkgs.gcc
+      ];
+      lua = pkgs.neovim-unwrapped.lua;
+      postBuild = "wrapProgram $out/bin/nvim --prefix CC : ${pkgs.lib.getExe pkgs.gcc}";
+      meta = with pkgs.lib; {
+        description = "Neovim, a hyperextensible Vim-based text editor";
+        license = licenses.mit;
+        platforms = platforms.unix;
+        teams = [ ];
+      };
+    };
+
     extraPackages = with pkgs; [
       tree-sitter
     ];
@@ -31,7 +49,7 @@ in
     SUDO_EDITOR = "nvim";
   };
 
-  # xdg.configFile = {
-  #   "nvim" = symlink "home/apps/nvim" { recursive = true; };
-  # };
+  xdg.configFile = {
+    "nvim" = symlink "home/apps/nvim" { recursive = true; };
+  };
 }

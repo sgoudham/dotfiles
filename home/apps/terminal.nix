@@ -16,6 +16,14 @@
       window-decoration = "none";
       linux-cgroup = "always";
       maximize = true;
+      clipboard-read = "allow";
+      clipboard-write = "allow";
+      keybind = [
+        "alt+shift+n=new_tab"
+        "alt+shift+h=previous_tab"
+        "alt+shift+l=next_tab"
+        "alt+shift+d=close_tab"
+      ];
     };
   };
 

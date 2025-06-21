@@ -68,6 +68,7 @@
 
   catppuccin.flavor = "mocha";
   catppuccin.enable = true;
+  catppuccin.nvim.enable = false;
 
   xdg.configFile = {
     "Code/User/settings.json".source =
