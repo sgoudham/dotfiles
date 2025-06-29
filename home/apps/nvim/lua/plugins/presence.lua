@@ -1,6 +1,6 @@
 return {
   {
-    "andweeb/presence.nvim",
+    "jiriks74/presence.nvim",
     opts = {
       neovim_image_text = "Home Sweet Home",
     },
