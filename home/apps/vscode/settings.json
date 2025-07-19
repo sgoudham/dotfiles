@@ -298,5 +298,7 @@
     }
   ],
   "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-mocha"
+  "workbench.iconTheme": "catppuccin-mocha",
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "svelte.enable-ts-plugin": true
 }

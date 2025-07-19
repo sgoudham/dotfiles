@@ -36,6 +36,7 @@ in
         description = "Neovim, a hyperextensible Vim-based text editor";
         license = licenses.mit;
         platforms = platforms.unix;
+        mainProgram = pkgs.neovim-unwrapped;
         teams = [ ];
       };
     };

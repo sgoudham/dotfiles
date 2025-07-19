@@ -51,7 +51,7 @@
 
         modules = [
           ./home
-          nix-index-database.hmModules.nix-index
+          nix-index-database.homeModules.nix-index
           catppuccin.homeModules.catppuccin
         ];
 

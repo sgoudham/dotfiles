@@ -95,5 +95,7 @@
     gh
     ripgrep
     fd
+    catppuccin-whiskers
+    catppuccin-catwalk
   ];
 }
