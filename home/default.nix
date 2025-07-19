@@ -14,6 +14,7 @@
     ./apps/terminal.nix
     ./apps/nvim.nix
     ./apps/node.nix
+    ./apps/rust.nix
   ];
 
   home.username = "goudham";
