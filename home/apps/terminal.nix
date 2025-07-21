@@ -97,5 +97,6 @@
     fd
     catppuccin-whiskers
     catppuccin-catwalk
+    just
   ];
 }
