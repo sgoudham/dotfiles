@@ -1,75 +1,46 @@
 {
-  "workbench.startupEditor": "none",
-  "workbench.reduceMotion": "on",
-  "workbench.commandPalette.preserveInput": true,
-  "files.autoSave": "afterDelay",
+  "catppuccin.accentColor": "pink",
   "catppuccin.italicComments": false,
   "catppuccin.italicKeywords": false,
-  "catppuccin.accentColor": "pink",
-  "window.titleBarStyle": "custom",
-  // Editor
-  "editor.fontSize": 14,
-  "editor.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
-  "editor.fontWeight": "bold",
-  "editor.tabSize": 2,
-  "editor.lineNumbers": "relative",
-  "editor.smoothScrolling": true,
-  "editor.cursorSmoothCaretAnimation": "on",
-  "editor.mouseWheelZoom": true,
-  "editor.minimap.autohide": true,
-  "editor.inlayHints.padding": true,
   "editor.acceptSuggestionOnEnter": "smart",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
+  "editor.fontSize": 16,
   "editor.formatOnSave": false,
+  "editor.inlayHints.padding": true,
+  "editor.minimap.autohide": true,
+  "editor.mouseWheelZoom": true,
+  "editor.smoothScrolling": true,
   "editor.suggest.preview": true,
-  // Latex
-  "latex-workshop.latex.autoBuild.run": "onSave",
-  // Terminal
-  "terminal.integrated.defaultProfile.linux": "fish",
-  "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontWeight": "bold",
-  // Nix
-  "nix.enableLanguageServer": true, // Enable LSP.
-  "nix.serverPath": "/home/hammy/.nix-profile/bin/nil", // The path to the LSP server executable.
-  "[nix]": {
-    "editor.defaultFormatter": "kamadorueda.alejandra",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": false
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.autoSave": "afterDelay",
+  "git.confirmSync": false,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "/home/goudham/.nix-profile/bin/nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "options": {
+        "home-manager": {
+          "expr": "(builtins.getFlake (builtins.toString ./.)).homeConfigurations.goudham.options"
+        }
+      }
+    }
   },
-  "alejandra.program": "/home/hammy/.nix-profile/bin/alejandra",
-  // Vim
-  "vim.leader": "<space>",
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.fontSize": 18,
   "vim.easymotion": true,
   "vim.easymotionDimBackground": false,
-  "vim.useSystemClipboard": false,
-  "vim.hlsearch": true,
-  "vim.incsearch": true,
   "vim.handleKeys": {
     "<C-a>": false, // select all
     "<C-c>": false, // copy
-    "<C-x>": false, // cut
+    "<C-f>": false, // find
     "<C-v>": false, // paste
-    "<C-f>": false // find
+    "<C-x>": false // cut
   },
-  "vim.useCtrlKeys": true,
-  "vim.visualModeKeyBindings": [
-    {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
-    },
-    {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
-    }
-  ],
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     // Make sure to use VsCode's undo stack -> https://github.com/VSCodeVim/Vim/issues/1490
     {
@@ -88,6 +59,22 @@
         "redo"
       ]
     },
+    {
+      "before": [
+        "<C-o>"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
+    },
+    {
+      "before": [
+        "<C-i>"
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
+    },
     // Helpful Stuff
     {
       "before": [
@@ -98,40 +85,40 @@
       ]
     },
     {
-      "before": [
-        "<CR>"
-      ],
       "after": [
         "o",
         "<ESC>"
+      ],
+      "before": [
+        "<CR>"
       ]
     },
     {
-      "before": [
-        "0"
-      ],
       "after": [
         "^"
+      ],
+      "before": [
+        "0"
       ]
     },
     {
-      "before": [
-        "<C-u>"
-      ],
       "after": [
         "<C-u>",
         "z",
         "z"
+      ],
+      "before": [
+        "<C-u>"
       ]
     },
     {
-      "before": [
-        "<C-d>"
-      ],
       "after": [
         "<C-d>",
         "z",
         "z"
+      ],
+      "before": [
+        "<C-d>"
       ]
     },
     {
@@ -209,12 +196,12 @@
     },
     // EasyMotion
     {
-      "before": [
-        "s"
-      ],
       "after": [
         "<leader>",
         "<leader>"
+      ],
+      "before": [
+        "s"
       ]
     },
     // Git
@@ -290,70 +277,28 @@
       ]
     }
   ],
-  "[python]": {
-    "editor.formatOnType": false,
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "git.autofetch": true,
-  "redhat.telemetry.enabled": false,
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "explorer.confirmDragAndDrop": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "git.confirmSync": false,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.inlineSuggest.enabled": true,
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false
-  },
-  "rust-analyzer.check.command": "clippy",
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "terminal.integrated.persistentSessionScrollback": 10000,
-  "terminal.integrated.scrollback": 10000,
-  "terminal.external.linuxExec": "WezTerm",
-  "editor.wordWrap": "on",
-  "window.zoomLevel": 1,
-  "files.autoSaveDelay": 100,
-  "terminal.integrated.smoothScrolling": true,
-  "explorer.confirmDelete": false,
-  "workbench.iconTheme": "catppuccin-latte",
-  "workbench.colorTheme": "Catppuccin Latte",
-  "[mdx]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
-  },
-  "diffEditor.renderSideBySide": false,
-  "github.copilot.editor.enableAutoCompletions": true
+  "vim.useCtrlKeys": true,
+  "vim.useSystemClipboard": false,
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
+    },
+    {
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
+    }
+  ],
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "svelte.enable-ts-plugin": true
 }

@@ -11,13 +11,4 @@ return {
       { "<leader>gG", "<cmd>Neogit cwd=%:p:h<cr>", desc = "Open Neogit (cwd)" },
     },
   },
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "LazyFile",
-    keys = {
-      { "]h", "<CMD>Gitsigns next_hunk<CR>zz", desc = "Next Hunk" },
-      { "[h", "<CMD>Gitsigns prev_hunk<CR>zz", desc = "Prev Hunk" },
-      { "<leader>ghP", "<CMD>Gitsigns preview_hunk<CR>zz", desc = "Preview Hunk" },
-    },
-  },
 }
