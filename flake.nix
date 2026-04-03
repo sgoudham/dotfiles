@@ -39,11 +39,17 @@
       home-manager,
       catppuccin,
       nix-index-database,
+      nixGL,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        system = system;
+        overlays = [
+          nixGL.overlays.default
+        ];
+      };
     in
     {
       homeConfigurations."goudham" = home-manager.lib.homeManagerConfiguration {

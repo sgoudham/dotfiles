@@ -4,19 +4,19 @@
     sgoudham@gmail.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2kW8iK+a+msGY4ss5pU04Bye9yHhADNaXfNOVVy82A sgoudham@gmail.com
   '';
 
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
+    options.background = "dark";
+  };
+
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userEmail = "sgoudham@gmail.com";
-    userName = "sgoudham";
     signing = {
       format = "ssh";
       signByDefault = true;
       key = "~/.ssh/id_ed25519.pub";
-    };
-    difftastic = {
-      enable = true;
-      background = "dark";
     };
     ignores = [
       # General
@@ -40,7 +40,9 @@
       # Node
       "node_modules/"
     ];
-    extraConfig = {
+    settings = {
+      user.name = "sgoudham";
+      user.email = "sgoudham@gmail.com";
       branch.sort = "-committerdate";
       core = {
         autocrlf = "input";

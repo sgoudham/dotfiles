@@ -33,7 +33,7 @@
   # environment.
   home.packages = with pkgs; [
     nixd
-    nixfmt-rfc-style
+    nixfmt
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -64,8 +64,8 @@
     options = "--delete-older-than 3d";
   };
 
-  nixGL.packages = inputs.nixGL.packages;
-  nixGL.vulkan.enable = false;
+  targets.genericLinux.nixGL.packages = inputs.nixGL.packages;
+  targets.genericLinux.nixGL.vulkan.enable = false;
 
   catppuccin.flavor = "mocha";
   catppuccin.enable = true;

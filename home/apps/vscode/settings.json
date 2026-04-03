@@ -1,4 +1,6 @@
 {
+  "window.titleBarStyle": "custom",
+  "terminal.integrated.stickyScroll.enabled": false,
   "catppuccin.accentColor": "pink",
   "catppuccin.italicComments": false,
   "catppuccin.italicKeywords": false,
@@ -6,9 +8,9 @@
   "editor.cursorSmoothCaretAnimation": "on",
   "editor.fontFamily": "Iosevka Term, Symbols Nerd Font, monospace",
   "editor.fontSize": 16,
-  "editor.formatOnSave": false,
   "editor.inlayHints.padding": true,
-  "editor.minimap.autohide": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.autohide": "mouseover",
   "editor.mouseWheelZoom": true,
   "editor.smoothScrolling": true,
   "editor.suggest.preview": true,
@@ -44,261 +46,184 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     // Make sure to use VsCode's undo stack -> https://github.com/VSCodeVim/Vim/issues/1490
     {
-      "before": [
-        "u"
-      ],
-      "commands": [
-        "undo"
-      ]
+      "before": ["u"],
+      "commands": ["undo"]
     },
     {
-      "before": [
-        "<C-r>"
-      ],
-      "commands": [
-        "redo"
-      ]
+      "before": ["<C-r>"],
+      "commands": ["redo"]
     },
     {
-      "before": [
-        "<C-o>"
-      ],
-      "commands": [
-        "workbench.action.navigateBack"
-      ]
+      "before": ["<C-o>"],
+      "commands": ["workbench.action.navigateBack"]
     },
     {
-      "before": [
-        "<C-i>"
-      ],
-      "commands": [
-        "workbench.action.navigateForward"
-      ]
+      "before": ["<C-i>"],
+      "commands": ["workbench.action.navigateForward"]
     },
     // Helpful Stuff
     {
-      "before": [
-        "/"
-      ],
-      "commands": [
-        "actions.find"
-      ]
+      "before": ["/"],
+      "commands": ["actions.find"]
     },
     {
-      "after": [
-        "o",
-        "<ESC>"
-      ],
-      "before": [
-        "<CR>"
-      ]
+      "after": ["o", "<ESC>"],
+      "before": ["<CR>"]
     },
     {
-      "after": [
-        "^"
-      ],
-      "before": [
-        "0"
-      ]
+      "after": ["^"],
+      "before": ["0"]
     },
     {
-      "after": [
-        "<C-u>",
-        "z",
-        "z"
-      ],
-      "before": [
-        "<C-u>"
-      ]
+      "after": ["<C-u>", "z", "z"],
+      "before": ["<C-u>"]
     },
     {
-      "after": [
-        "<C-d>",
-        "z",
-        "z"
-      ],
-      "before": [
-        "<C-d>"
-      ]
+      "after": ["<C-d>", "z", "z"],
+      "before": ["<C-d>"]
     },
     {
-      "before": [
-        "<leader>",
-        "q"
-      ],
-      "commands": [
-        "workbench.action.closeActiveEditor"
-      ]
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
     },
     {
-      "before": [
-        "<leader>",
-        "w"
-      ],
-      "commands": [
-        "workbench.action.files.save"
-      ]
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
     },
     {
-      "before": [
-        "<leader>",
-        "f",
-        "f"
-      ],
-      "commands": [
-        "workbench.action.quickOpen"
-      ]
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": [
-        "[",
-        "c"
-      ],
-      "commands": [
-        "workbench.action.editor.previousChange"
-      ]
+      "before": ["[", "c"],
+      "commands": ["workbench.action.editor.previousChange"]
     },
     {
-      "before": [
-        "]",
-        "c"
-      ],
-      "commands": [
-        "workbench.action.editor.nextChange"
-      ]
+      "before": ["]", "c"],
+      "commands": ["workbench.action.editor.nextChange"]
     },
     {
-      "before": [
-        "[",
-        "d"
-      ],
-      "commands": [
-        "editor.action.marker.prev"
-      ]
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
     },
     {
-      "before": [
-        "]",
-        "d"
-      ],
-      "commands": [
-        "editor.action.marker.next"
-      ]
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
     },
     {
-      "before": [
-        "<leader>",
-        "a"
-      ],
-      "commands": [
-        "workbench.action.showCommands"
-      ]
+      "before": ["<leader>", "a"],
+      "commands": ["workbench.action.showCommands"]
     },
     // EasyMotion
     {
-      "after": [
-        "<leader>",
-        "<leader>"
-      ],
-      "before": [
-        "s"
-      ]
+      "after": ["<leader>", "<leader>"],
+      "before": ["s"]
     },
     // Git
     {
-      "before": [
-        "<leader>",
-        "g",
-        "g"
-      ],
-      "commands": [
-        "workbench.view.scm"
-      ]
+      "before": ["<leader>", "g", "g"],
+      "commands": ["workbench.view.scm"]
     },
     {
-      "before": [
-        "<leader>",
-        "g",
-        "h"
-      ],
-      "commands": [
-        "toggle.diff.renderSideBySide"
-      ]
+      "before": ["<leader>", "g", "h"],
+      "commands": ["toggle.diff.renderSideBySide"]
     },
     {
-      "before": [
-        "<leader>",
-        "g",
-        "p"
-      ],
-      "commands": [
-        "git.openChange"
-      ]
+      "before": ["<leader>", "g", "p"],
+      "commands": ["git.openChange"]
     },
     // LSP
     {
-      "before": [
-        "<leader>",
-        "l",
-        "f"
-      ],
-      "commands": [
-        "editor.action.formatDocument"
-      ]
+      "before": ["<leader>", "l", "f"],
+      "commands": ["editor.action.formatDocument"]
     },
     {
-      "before": [
-        "<leader>",
-        "l",
-        "r"
-      ],
-      "commands": [
-        "editor.action.rename"
-      ]
+      "before": ["<leader>", "l", "r"],
+      "commands": ["editor.action.rename"]
     },
     {
-      "before": [
-        "<leader>",
-        "l",
-        "a"
-      ],
-      "commands": [
-        "editor.action.quickFix"
-      ]
+      "before": ["<leader>", "l", "a"],
+      "commands": ["editor.action.quickFix"]
     },
     // Tabs
     {
-      "before": [
-        "<leader>",
-        "o"
-      ],
-      "commands": [
-        "workbench.action.closeOtherEditors"
-      ]
+      "before": ["<leader>", "o"],
+      "commands": ["workbench.action.closeOtherEditors"]
     }
   ],
   "vim.useCtrlKeys": true,
   "vim.useSystemClipboard": false,
   "vim.visualModeKeyBindings": [
     {
-      "before": [
-        ">"
-      ],
-      "commands": [
-        "editor.action.indentLines"
-      ]
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
     },
     {
-      "before": [
-        "<"
-      ],
-      "commands": [
-        "editor.action.outdentLines"
-      ]
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
     }
   ],
-  "workbench.colorTheme": "Catppuccin Mocha",
-  "workbench.iconTheme": "catppuccin-mocha",
   "github.copilot.nextEditSuggestions.enabled": false,
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "explorer.confirmPasteNative": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "redhat.telemetry.enabled": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "haskell.manageHLS": "GHCup",
+  "github.copilot.nextEditSuggestions.fixes": false,
+  "github.copilot.renameSuggestions.triggerAutomatically": false,
+  "editor.tokenColorCustomizations": {
+    "[Catppuccin Latte]": {
+      "textMateRules": [
+        {
+          "scope": "keyword.other.preprocessor.pragma.haskell",
+          "settings": {
+            "foreground": "#dc8a78",
+          }
+        },
+        {
+          "scope": "keyword.other.preprocessor.haskell",
+          "settings": {
+            "foreground": "#dc8a78",
+          }
+        },
+        {
+          "scope": "meta.preprocessor.haskell",
+          "settings": {
+            "foreground": "#7c7f93",
+          }
+        }
+      ]
+    }
+  },
+  "workbench.iconTheme": "catppuccin-mocha",
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "chat.agent.thinking.terminalTools": false,
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://raw.githubusercontent.com": true,
+    "https://docs.renovatebot.com": true
+  }
 }
